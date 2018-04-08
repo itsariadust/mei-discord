@@ -1,2 +1,2 @@
-# mei-bot
-A discord.js bot
+# Mei, a discord bot
+Under Construction
