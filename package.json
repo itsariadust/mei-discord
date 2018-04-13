@@ -1,0 +1,33 @@
+{
+  "name": "mei-discord",
+  "version": "1.0.0",
+  "description": "An interactive discord bot",
+  "main": "index.js",
+  "engines": {
+    "node": "8.11.1",
+    "npm": "5.6.0"
+  },
+  "dependencies": {
+    "common-tags": "^1.7.2",
+    "discord.js": "^11.3.2",
+    "discord.js-commando": "^0.9.0",
+    "moment": "^2.22.0",
+    "path": "^0.12.7",
+    "sqlite": "^2.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsYuuki/mei-discord.git"
+  },
+  "author": "Eris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itsYuuki/mei-discord/issues"
+  },
+  "homepage": "https://github.com/itsYuuki/mei-discord#readme"
+}
