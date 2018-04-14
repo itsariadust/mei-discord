@@ -18,6 +18,7 @@ module.exports = class ServerInfoCommand extends Commando.Command {
 
   run(message, callback) {
 
+    let owner = message.guild.owner;
     let vLevelNum = message.guild.verificationLevel;
     let vLevel;
 
@@ -43,7 +44,6 @@ module.exports = class ServerInfoCommand extends Commando.Command {
 
     }
 
-    let owner = message.guild.owner;
     const embed = new RichEmbed();
     embed.setAuthor(message.guild.name, message.guild.iconURL);
     embed.addField("ID", message.guild.id);
