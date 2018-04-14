@@ -24,7 +24,7 @@ module.exports = class UserInfoCommand extends Commando.Command {
       embed.setTitle("Information About" + " " + message.author.username);
       embed.setColor(color);
       embed.addField("ID:", message.member.id);
-      embed.addField("Status", message.member.presence);
+      embed.addField("Status", message.member.presence.status);
       embed.addField("Joined in Discord:", message.author.createdAt, true);
       embed.addField("Joined in server:", message.member.joinedAt, true);
       embed.addField("Server Nickname:", message.member.nickname !== null ? `Nickname: ${message.member.nickname}` : "No nickname set", true);
@@ -35,9 +35,9 @@ module.exports = class UserInfoCommand extends Commando.Command {
 
       embed.setTitle("Information About" + " " + member.displayName);
       embed.setColor(color);
-      embed.addField("Status", member.presence);
+      embed.addField("Status", member.presence.status);
       embed.addField("ID:", member.id);
-      embed.addField("Joined in Discord:", "[unavailable]", true);
+      embed.addField("Joined in Discord:", member.user.createdAt, true);
       embed.addField("Joined in server:", member.joinedAt, true);
       embed.addField("Server Nickname:", member.nickname !== null ? `Nickname: ${member.nickname}` : "No nickname set", true);
       embed.addField("Server Roles:", member.roles.map(roles => `${roles.name}`).join(", "));
