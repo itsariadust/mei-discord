@@ -6,7 +6,7 @@ module.exports = class StatusCommand extends Commando.Command {
   constructor(client) {
     super(client, {
       name: "stats",
-      group: "utility",
+      group: "core",
       memberName: "botstatus",
       description: "Shows bot statistics like number of guilds the bot is in, the channels the bot is in, the users using the bot, and uptime",
     });

@@ -8,7 +8,7 @@ module.exports = class ServerInfoCommand extends Commando.Command {
     super(client, {
 
       name: "serverinfo",
-      group: "utility",
+      group: "core",
       memberName: "serverinfo",
       description: "Displays the server info"
 

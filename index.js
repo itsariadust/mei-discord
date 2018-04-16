@@ -42,7 +42,8 @@ client.setProvider(
 
 //command registries
 client.registry.registerGroup("fun", "Fun");
-client.registry.registerGroup("utility", "utility");
+client.registry.registerGroup("core", "Core");
+client.registry.registerGroup("reactions","Reactions");
 client.registry.registerDefaults();
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
 
