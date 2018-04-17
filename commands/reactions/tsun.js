@@ -7,10 +7,10 @@ module.exports = class plsbulliCommand extends Commando.Command {
 
     super(client, {
 
-      name:"lewd",
+      name:"tsun",
       group:"reactions",
-      memberName:"lewd",
-      description:"L-Lewd >///<",
+      memberName:"tsun",
+      description:"Baka baka baka!",
 
     });
 
@@ -19,7 +19,7 @@ module.exports = class plsbulliCommand extends Commando.Command {
   run(message) {
 
     const embed = new RichEmbed()
-      .setImage("https://i.imgur.com/qZyrUsn.png");
+      .setImage("https://media.tenor.com/images/99ed452a33c03a91c37083df7eb2419f/tenor.gif");
     message.channel.send({embed});
 
   }

@@ -7,10 +7,10 @@ module.exports = class plsbulliCommand extends Commando.Command {
 
     super(client, {
 
-      name:"lewd",
+      name:"shameless",
       group:"reactions",
-      memberName:"lewd",
-      description:"L-Lewd >///<",
+      memberName:"shameless",
+      description:"Shameless pervert",
 
     });
 
@@ -19,7 +19,7 @@ module.exports = class plsbulliCommand extends Commando.Command {
   run(message) {
 
     const embed = new RichEmbed()
-      .setImage("https://i.imgur.com/qZyrUsn.png");
+      .setImage("https://pa1.narvii.com/5824/b9aeeecb706c61b7c5c6584945be6aec28acfc5c_hq.gif");
     message.channel.send({embed});
 
   }
