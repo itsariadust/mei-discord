@@ -49,4 +49,4 @@ client.registry.registerDefaults();
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
 
 //now we log in OwO
-client.login(config.token);
+client.login(process.env.BOT_TOKEN);
