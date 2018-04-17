@@ -7,7 +7,7 @@ Copyright (c) 2018 Eris. All Rights Reserved
 const Commando = require("discord.js-commando");
 const sqlite = require("sqlite");
 const path = require("path");
-const config = require("./config.json"); //this is just a config file
+//const config = require("./config.json"); //this is just a config file
 
 //client
 const client = new Commando.Client({
