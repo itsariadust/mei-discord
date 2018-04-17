@@ -46,6 +46,7 @@ module.exports = class ServerInfoCommand extends Commando.Command {
 
     const embed = new RichEmbed();
     embed.setAuthor(message.guild.name, message.guild.iconURL);
+    embed.setThumbnail(message.guild.iconURL);
     embed.addField("ID", message.guild.id);
     embed.addField("Server Owner", owner.user.username + "#" + owner.user.discriminator);
     embed.addField("Verification Level", vLevel);
