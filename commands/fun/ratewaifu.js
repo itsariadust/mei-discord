@@ -26,7 +26,7 @@ module.exports = class rateWaifuCommand extends Commando.Command {
   run(message, args) {
 
     const { waifu } = args;
-    const waifuRate = Math.floor(Math.random() * 12);
+    const waifuRate = Math.floor(Math.random() * 100);
     message.say("I would rate" + " " + waifu + " " + "a" + " " + waifuRate + "%");
 
   }

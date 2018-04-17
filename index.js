@@ -14,7 +14,8 @@ const client = new Commando.Client({
   owner: "175565380981358592",
   commandPrefix: "m!",
   disableEveryone: true,
-  unknownCommandResponse: false
+  unknownCommandResponse: false,
+  guildOnly: true
 });
 
 //for console logging

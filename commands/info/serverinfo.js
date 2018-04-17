@@ -52,7 +52,7 @@ module.exports = class ServerInfoCommand extends Commando.Command {
     embed.addField("Verification Level", vLevel);
     embed.addField("Region", message.guild.region);
     embed.addField("Channels", message.guild.channels.size, true);
-    embed.addField("Members", message.guild.memberCount, true);
+    embed.addField("Members", message.guild.members.filter(member => !member.user.bot).size, true);
     embed.addField("Created On", message.guild.createdAt);
     embed.addField("Roles", message.guild.roles.size);
 
