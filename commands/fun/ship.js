@@ -18,7 +18,7 @@ module.exports = class shipCommand extends Commando.Command {
           type:"member"
         },
         {
-          key:"shipUser1",
+          key:"shipUser2",
           prompt:"Please mention a second member!",
           type:"member"
         }
