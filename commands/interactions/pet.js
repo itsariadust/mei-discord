@@ -1,7 +1,5 @@
-https://media1.tenor.com/images/bc5e143ab33084961904240f431ca0b1/tenor.gif?itemid=9838409const Commando = require("discord.js-commando");
-const {
-  RichEmbed
-} = require("discord.js");
+const Commando = require("discord.js-commando");
+const { RichEmbed } = require("discord.js");
 
 module.exports = class petCommand extends Commando.Command {
 
