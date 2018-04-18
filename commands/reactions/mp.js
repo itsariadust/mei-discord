@@ -1,16 +1,16 @@
 const Commando = require("discord.js-commando");
 const { RichEmbed } = require("discord.js");
 
-module.exports = class plsbulliCommand extends Commando.Command {
+module.exports = class mpCommand extends Commando.Command {
 
   constructor(client) {
 
     super(client, {
 
-      name:"swat",
+      name:"mp",
       group:"reactions",
-      memberName:"swat",
-      description:"We just want to talk",
+      memberName:"mp",
+      description:"Military police, we have a severe case of lolicon here",
 
     });
 
@@ -19,7 +19,7 @@ module.exports = class plsbulliCommand extends Commando.Command {
   run(message) {
 
     const embed = new RichEmbed()
-      .setImage("https://i.imgur.com/aK0hKT5.png");
+      .setImage("https://i.imgur.com/Cez6Gy4.jpg");
     message.channel.send({embed});
 
   }

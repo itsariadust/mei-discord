@@ -7,12 +7,12 @@ Copyright (c) 2018 Eris. All Rights Reserved
 const Commando = require("discord.js-commando");
 const sqlite = require("sqlite");
 const path = require("path");
-//const config = require("./config.json"); //this is just a config file
+const config = require("./config.json"); //this is just a config file
 
 //client
 const client = new Commando.Client({
   owner: "175565380981358592",
-  commandPrefix: "m!",
+  commandPrefix: ">",
   disableEveryone: true,
   unknownCommandResponse: false,
   guildOnly: true
@@ -26,7 +26,7 @@ client.on("ready", () => {
 
   console.log("Loading...");
   console.log("Mei now up and running...");
-  client.user.setActivity("m!help", ["Playing"]);
+  client.user.setActivity(">help", ["Playing"]);
 
 });
 client.on("commandError", (cmd, err) => {
@@ -50,4 +50,4 @@ client.registry.registerDefaults();
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
 
 //now we log in OwO
-client.login(process.env.BOT_TOKEN);
+client.login(config.token);
