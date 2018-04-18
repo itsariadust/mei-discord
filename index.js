@@ -1,13 +1,14 @@
 /*
 Mei Discord Bot
 Copyright (c) 2018 Eris. All Rights Reserved
+Check the MIT License
 */
 
-//required libraries. Using both discord.js and discord.js-commando cuz why not
+//required libraries. (NOTE: Some commands do have module dependencies so check them out as well)
 const Commando = require("discord.js-commando");
 const sqlite = require("sqlite");
 const path = require("path");
-const config = require("./config.json"); //this is just a config file
+const config = require("./config.json"); //this is just a config file (Only for the Indev version of Mei)
 
 //client
 const client = new Commando.Client({
@@ -18,14 +19,14 @@ const client = new Commando.Client({
   guildOnly: true
 });
 
-//for console logging
+//for console logging. Usefull for debugging
 client.on("error", console.error);
 client.on("warn", console.warn);
 client.on("debug", console.log);
 client.on("ready", () => {
 
   console.log("Loading...");
-  console.log("Mei now up and running...");
+  console.log("Mei is now up and running...");
   client.user.setActivity(">help", ["Playing"]);
 
 });
@@ -36,16 +37,17 @@ client.on("commandError", (cmd, err) => {
 
 });
 
-//setting provider, using sqlite
+//settings provider, using sqlite
 client.setProvider(
   sqlite.open(path.join(__dirname,"database.sqlite3")).then(db => new Commando.SQLiteProvider(db))
 ).catch(console.error);
 
-//command registries
+//command group registries
 client.registry.registerGroup("core", "Core");
 client.registry.registerGroup("info", "Info");
 client.registry.registerGroup("fun", "Fun");
 client.registry.registerGroup("reactions","Reactions");
+client.registry.registerGroup("interactions","Interactions");
 client.registry.registerDefaults();
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
 

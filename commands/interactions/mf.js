@@ -8,7 +8,7 @@ module.exports = class mfCommand extends Commando.Command {
     super(client, {
 
       name:"mf",
-      group:"reactions",
+      group:"interactions",
       memberName:"mf",
       description:"Give the middle finger",
 
