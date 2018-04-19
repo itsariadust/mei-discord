@@ -18,7 +18,7 @@ module.exports = class AboutCommand extends Commando.Command {
     const embed = new RichEmbed();
     embed.setTitle("About Mei");
     embed.setColor(0x551A8B);
-    embed.setDescription("Mei is a discord bot made by Eris#6753 using discord.js. Commands handled by discord.js-commando. Bot is still under construction");
+    embed.setDescription("Mei is a discord bot made by Eris#6753 using discord.js. Commands handled by discord.js-commando. For help please type `m!help`");
     embed.addField("Owner","Eris#6753");
     embed.addField("Version","v1.0.2");
     return msg.embed(embed).then(callback);
