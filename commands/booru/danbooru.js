@@ -2,7 +2,7 @@ const Commando = require("discord.js-commando");
 const { RichEmbed } = require("discord.js");
 const Danbooru = require("danbooru");
 
-module.exports = class sampleCommand extends Commando.Command {
+module.exports = class danbooruCommand extends Commando.Command {
 
   constructor(client) {
 
@@ -30,7 +30,6 @@ module.exports = class sampleCommand extends Commando.Command {
       embed.setImage(`${url}`);
       return message.embed(embed).then(callback);
     });
-
 
   }
 };
