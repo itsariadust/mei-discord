@@ -1,7 +1,7 @@
 const Commando = require("discord.js-commando");
 const { RichEmbed } = require("discord.js");
 
-module.exports = class plsbulliCommand extends Commando.Command {
+module.exports = class jailCommand extends Commando.Command {
 
   constructor(client) {
 
@@ -10,7 +10,7 @@ module.exports = class plsbulliCommand extends Commando.Command {
       name:"jail",
       group:"reactions",
       memberName:"jail",
-      description:"Jail is just a room",
+      description:"Jail is over there onii-chan",
 
     });
 
@@ -19,7 +19,7 @@ module.exports = class plsbulliCommand extends Commando.Command {
   run(message) {
 
     const embed = new RichEmbed()
-      .setImage("https://cdn.boldomatic.com/content/post/x6MEAg/Age-is-just-a-number-yeah-and-jail-is-just-a-room?size=800");
+      .setImage("http://i0.kym-cdn.com/photos/images/original/001/271/516/407.jpg");
     message.channel.send({embed});
 
   }
