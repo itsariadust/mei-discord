@@ -8,12 +8,12 @@ Check the MIT License
 const Commando = require("discord.js-commando");
 const sqlite = require("sqlite");
 const path = require("path");
-const config = require("./config.json"); //this is just a config file (Only for the Indev version of Mei)
+//const config = require("./config.json"); //this is just a config file (Only for the Indev version of Mei)
 
 //client
 const client = new Commando.Client({
   owner: "175565380981358592",
-  commandPrefix: ">",
+  commandPrefix: "m!",
   disableEveryone: true,
   unknownCommandResponse: false,
   guildOnly: true
@@ -27,7 +27,7 @@ client.on("ready", () => {
 
   console.log("Loading...");
   console.log("Mei is now up and running...");
-  client.user.setActivity(">help", ["Playing"]);
+  client.user.setActivity("m!help", ["Playing"]);
 
 });
 client.on("commandError", (cmd, err) => {
@@ -53,4 +53,4 @@ client.registry.registerDefaults();
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
 
 //now we log in OwO
-client.login(config.token);
+client.login(process.env.BOT_TOKEN);
