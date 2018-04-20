@@ -24,9 +24,9 @@ module.exports = class smalCommand extends Commando.Command {
     let randMember = guildMembers[Math.floor(Math.random() * guildMembers.length)]
 
     if (!slammedMember) {
-      message.channel.send(message.author.username + " slams " + "<@" + randMember + ">");
+      message.channel.send(message.author.username + " slams " + "<@" + randMember + ">" + " " + "to the wall!");
     } else {
-      message.channel.send(message.author.username + " slams " + `${slammedMember}`);
+      message.channel.send(message.author.username + " slams " + `${slammedMember}` + " " + "to the wall!");
     }
 
     const embed = new RichEmbed()

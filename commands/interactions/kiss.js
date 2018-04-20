@@ -24,9 +24,9 @@ module.exports = class kissCommand extends Commando.Command {
     let randMember = guildMembers[Math.floor(Math.random() * guildMembers.length)]
 
     if (!member) {
-      message.channel.send(message.author.username + " hugs " + "<@" + randMember + ">");
+      message.channel.send(message.author.username + " kisses " + "<@" + randMember + ">");
     } else {
-      message.channel.send(message.author.username + " hugs " + `${member}`);
+      message.channel.send(message.author.username + " kisses " + `${member}`);
     }
 
     const embed = new RichEmbed()
