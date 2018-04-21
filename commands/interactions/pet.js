@@ -8,9 +8,10 @@ module.exports = class petCommand extends Commando.Command {
     super(client, {
 
       name: "pet",
+      aliases: ["pat"],
       group: "interactions",
       memberName: "pet",
-      description: "*pets*",
+      description: "*pets*"
 
     });
 
