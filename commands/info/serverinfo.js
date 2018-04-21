@@ -3,61 +3,65 @@ const { RichEmbed } = require("discord.js");
 
 module.exports = class ServerInfoCommand extends Commando.Command {
 
-  constructor(client) {
+	constructor(client) {
 
-    super(client, {
+		super(client, {
 
-      name: "serverinfo",
-      group: "info",
-      memberName: "serverinfo",
-      description: "Displays the server info"
+			name: "serverinfo",
+			group: "info",
+			memberName: "serverinfo",
+			description: "Displays the server info",
 
-    });
+		});
 
-  }
+	}
 
-  run(message, callback) {
+	run(message, callback) {
 
-    let owner = message.guild.owner;
-    let vLevelNum = message.guild.verificationLevel;
-    let vLevel;
+		const owner = message.guild.owner;
+		const vLevelNum = message.guild.verificationLevel;
+		let vLevel;
 
-    if (vLevelNum === 0) {
+		if (vLevelNum === 0) {
 
-      vLevel = "None";
+			vLevel = "None";
 
-    } else if (vLevelNum === 1) {
+		}
+		else if (vLevelNum === 1) {
 
-      vLevel = "Low";
+			vLevel = "Low";
 
-    } else if (vLevelNum === 2) {
+		}
+		else if (vLevelNum === 2) {
 
-      vLevel = "Medium";
+			vLevel = "Medium";
 
-    } else if (vLevelNum === 3) {
+		}
+		else if (vLevelNum === 3) {
 
-      vLevel = "High";
+			vLevel = "High";
 
-    } else if (vLevelNum === 4) {
+		}
+		else if (vLevelNum === 4) {
 
-      vLevel = "Extreme";
+			vLevel = "Extreme";
 
-    }
+		}
 
-    const embed = new RichEmbed();
-    embed.setAuthor(message.guild.name, message.guild.iconURL);
-    embed.setThumbnail(message.guild.iconURL);
-    embed.addField("ID", message.guild.id);
-    embed.addField("Server Owner", owner.user.username + "#" + owner.user.discriminator);
-    embed.addField("Verification Level", vLevel);
-    embed.addField("Region", message.guild.region);
-    embed.addField("Channels", message.guild.channels.size, true);
-    embed.addField("Members", message.guild.memberCount, true);
-    embed.addField("Created On", message.guild.createdAt);
-    embed.addField("Roles", message.guild.roles.size);
+		const embed = new RichEmbed();
+		embed.setAuthor(message.guild.name, message.guild.iconURL);
+		embed.setThumbnail(message.guild.iconURL);
+		embed.addField("ID", message.guild.id);
+		embed.addField("Server Owner", owner.user.username + "#" + owner.user.discriminator);
+		embed.addField("Verification Level", vLevel);
+		embed.addField("Region", message.guild.region);
+		embed.addField("Channels", message.guild.channels.size, true);
+		embed.addField("Members", message.guild.memberCount, true);
+		embed.addField("Created On", message.guild.createdAt);
+		embed.addField("Roles", message.guild.roles.size);
 
-    return message.embed(embed).then(callback);
+		return message.embed(embed).then(callback);
 
-  }
+	}
 
 };
