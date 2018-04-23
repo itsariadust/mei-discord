@@ -3,37 +3,37 @@ const { RichEmbed } = require("discord.js");
 
 module.exports = class stabCommand extends Commando.Command {
 
-	constructor(client) {
+  constructor(client) {
 
-		super(client, {
+    super(client, {
 
-			name:"stab",
-			group:"interactions",
-			memberName:"stab",
-			description:"You have been stabbed!",
+      name:"stab",
+      group:"interactions",
+      memberName:"stab",
+      description:"You have been stabbed!",
 
-		});
+    });
 
-	}
+  }
 
-	run(message) {
+  run(message) {
 
-		const stab = ["https://media1.tenor.com/images/aebaa1a854ea1fc04286a8729b3b6cf4/tenor.gif?itemid=5381666"];
-		const stabbedMember = message.mentions.members.first();
-		const guildMembers = message.guild.members.map(gm => gm.id);
-		const randMember = guildMembers[Math.floor(Math.random() * guildMembers.length)];
+    const stab = ["https://media1.tenor.com/images/aebaa1a854ea1fc04286a8729b3b6cf4/tenor.gif?itemid=5381666"];
+    const stabbedMember = message.mentions.members.first();
+    const guildMembers = message.guild.members.map(gm => gm.id);
+    const randMember = guildMembers[Math.floor(Math.random() * guildMembers.length)];
 
-		if (!stabbedMember) {
-			message.channel.send(message.author.username + " stabs " + "<@" + randMember + ">");
-		}
-		else {
-			message.channel.send(message.author.username + " stabs " + `${stabbedMember}`);
-		}
+    if (!stabbedMember) {
+      message.channel.send(message.author.username + " stabs " + "<@" + randMember + ">");
+    }
+    else {
+      message.channel.send(message.author.username + " stabs " + `${stabbedMember}`);
+    }
 
-		const embed = new RichEmbed()
-			.setImage(stab[Math.floor(Math.random() * stab.length)]);
-		message.channel.send({ embed });
+    const embed = new RichEmbed()
+      .setImage(stab[Math.floor(Math.random() * stab.length)]);
+    message.channel.send({ embed });
 
-	}
+  }
 
 };

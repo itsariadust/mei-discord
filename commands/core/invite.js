@@ -3,25 +3,25 @@ const { RichEmbed } = require("discord.js");
 
 module.exports = class inviteCommand extends Commando.Command {
 
-	constructor(client) {
+  constructor(client) {
 
-		super(client, {
+    super(client, {
 
-			name: "invite",
-			group: "core",
-			memberName: "invite",
-			description: "Invite me!",
+      name: "invite",
+      group: "core",
+      memberName: "invite",
+      description: "Invite me!",
 
-		});
+    });
 
-	}
+  }
 
-	run(message, callback) {
+  run(message, callback) {
 
-		const embed = new RichEmbed();
-		embed.addField("Invite me!", "https://discordapp.com/oauth2/authorize?&client_id=432365216593084426&scope=bot&permissions=0");
-		return message.embed(embed).then(callback);
+    const embed = new RichEmbed();
+    embed.addField("Invite me!", "https://discordapp.com/oauth2/authorize?&client_id=432365216593084426&scope=bot&permissions=0");
+    return message.embed(embed).then(callback);
 
-	}
+  }
 
 };

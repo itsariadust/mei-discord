@@ -1,7 +1,6 @@
 /*
 Mei Discord Bot
-Copyright (c) 2018 Eris. All Rights Reserved
-Check the MIT License
+Built with discord.js with Node
 */
 
 // required libraries. (NOTE: Some commands do have module dependencies so check them out as well)
@@ -13,11 +12,11 @@ const config = require("./config.json");
 
 // client
 const client = new Commando.Client({
-	owner: "175565380981358592",
-	commandPrefix: ">",
-	disableEveryone: true,
-	unknownCommandResponse: false,
-	guildOnly: true,
+  owner: "175565380981358592",
+  commandPrefix: ">",
+  disableEveryone: true,
+  unknownCommandResponse: false,
+  guildOnly: true,
 });
 
 // for console logging. Usefull for debugging
@@ -26,21 +25,40 @@ client.on("warn", console.warn);
 client.on("debug", console.log);
 client.on("ready", () => {
 
-	console.log("Loading...");
-	console.log("Mei is now up and running...");
-	client.user.setActivity(">help", ["Playing"]);
+  console.log(`[READY] Mei is now up and running as ${client.user.tag}`);
+  client.user.setActivity(">help", ["Playing"]);
+
+});
+client.on("disconnect", event => {
+
+  console.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
+  process.exit(0);
 
 });
 client.on("commandError", (cmd, err) => {
 
-	if (err instanceof Commando.FriendlyError) return;
-	console.error("Error in command $cmd.groupID:$cmd.memberName", err);
+  if (err instanceof Commando.FriendlyError) return;
+  console.error("[ERROR] Error in command $cmd.groupID:$cmd.memberName", err);
 
+});
+
+// non-error logging (guild updates)
+client.on("guildCreate", (guild) => {
+  console.log("[UPDATE] Joined Guild:" + " " + `${guild.name}` + " " + `(${guild.id})`);
+});
+client.on("guildDelete", (guild) => {
+  console.log("[UPDATE] Left Guild:" + " " + `${guild.name}` + " " + `(${guild.id})`);
+});
+client.on("guildUnavailable", (guild) => {
+  console.log("[UPDATE] Guild Unavailable:" + " " + `${guild.name}` + " " + `(${guild.id})`);
+});
+client.on("guildUpdate", (oldGuild, newGuild) => {
+  console.log("[UPDATE] Guild Updated: From:" + " " + `${oldGuild.name}` + " " + `(${oldGuild.id})` + " to"  + " " + `${newGuild.name}` + " " + `(${newGuild.id})`);
 });
 
 // settings provider, using sqlite
 client.setProvider(
-	sqlite.open(path.join(__dirname, "database.sqlite3")).then(db => new Commando.SQLiteProvider(db))
+  sqlite.open(path.join(__dirname, "database.sqlite3")).then(db => new Commando.SQLiteProvider(db))
 ).catch(console.error);
 
 // command group registries
