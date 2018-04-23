@@ -34,3 +34,24 @@ Mei is a discord bot built with [Discord.js](https://discordjs.org) with the [Co
 * **danbooru**: Posts a random image from Danbooru (SFW)
 * **konachan**: Posts a random image from Konachan (SFW)
 * **yandere**: Posts a random image from yande.re (SFW)
+
+## Hosting
+> Still needs to be updated
+
+For self-hosting, please follow the guide:
+*Make sure you have the LTS version of Node (Latest version is fine but I recommend LTS)
+* Download the code in the [Releases](https://github.com/itsYuuki/mei-discord/releases) page
+* Put it somehwere
+* Fire up that terminal (For Linux) or Command Prompt to that folder
+* Do `npm install` to install all dependencies
+* Create a `config.json` file in the bot files and put:
+```
+{
+  "token":"your bot token here"
+}
+```
+* After that, run `node index.js`
+* And we are done. If there's errors, pleasure report it in the [Issues](https://github.com/itsYuuki/mei-discord/issues) page
+
+## License
+Check the LICENSE file
