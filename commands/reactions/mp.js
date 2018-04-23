@@ -3,25 +3,25 @@ const { RichEmbed } = require("discord.js");
 
 module.exports = class mpCommand extends Commando.Command {
 
-	constructor(client) {
+  constructor(client) {
 
-		super(client, {
+    super(client, {
 
-			name:"mp",
-			group:"reactions",
-			memberName:"mp",
-			description:"Military police, we have a severe case of lolicon here",
+      name:"mp",
+      group:"reactions",
+      memberName:"mp",
+      description:"Military police, we have a severe case of lolicon here",
 
-		});
+    });
 
-	}
+  }
 
-	run(message) {
+  run(message) {
 
-		const embed = new RichEmbed()
-			.setImage("https://i.imgur.com/Cez6Gy4.jpg");
-		message.channel.send({ embed });
+    const embed = new RichEmbed()
+      .setImage("https://i.imgur.com/Cez6Gy4.jpg");
+    message.channel.send({ embed });
 
-	}
+  }
 
 };
