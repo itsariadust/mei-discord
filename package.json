@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "booru": "^0.4.0",
+    "chalk": "^2.4.0",
     "common-tags": "^1.7.2",
     "danbooru": "^3.0.7",
     "discord-eco": "0.0.10",

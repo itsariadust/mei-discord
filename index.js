@@ -7,6 +7,7 @@ Built with discord.js with Node
 const Commando = require("discord.js-commando");
 const sqlite = require("sqlite");
 const path = require("path");
+const chalk = require("chalk");
 // this is just a config file (Only for the Indev version of Mei)
 const config = require("./config.json");
 
@@ -25,35 +26,35 @@ client.on("warn", console.warn);
 client.on("debug", console.log);
 client.on("ready", () => {
 
-  console.log(`[READY] Mei is now up and running as ${client.user.tag}`);
+  console.log(chalk.green(`[READY] Mei is now up and running as ${client.user.tag}`));
   client.user.setActivity(">help", ["Playing"]);
 
 });
 client.on("disconnect", event => {
 
-  console.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
+  console.error(chalk.red(`[DISCONNECT] Disconnected with code ${event.code}.`));
   process.exit(0);
 
 });
 client.on("commandError", (cmd, err) => {
 
   if (err instanceof Commando.FriendlyError) return;
-  console.error("[ERROR] Error in command $cmd.groupID:$cmd.memberName", err);
+  console.error(chalk.red("[ERROR] Error in command $cmd.groupID:$cmd.memberName", err));
 
 });
 
 // non-error logging (guild updates)
 client.on("guildCreate", (guild) => {
-  console.log("[UPDATE] Joined Guild:" + " " + `${guild.name}` + " " + `(${guild.id})`);
+  console.log(chalk.blue("[UPDATE] Joined Guild:" + " " + `${guild.name}` + " " + `(${guild.id})`));
 });
 client.on("guildDelete", (guild) => {
-  console.log("[UPDATE] Left Guild:" + " " + `${guild.name}` + " " + `(${guild.id})`);
+  console.log(chalk.blue("[UPDATE] Left Guild:" + " " + `${guild.name}` + " " + `(${guild.id})`));
 });
 client.on("guildUnavailable", (guild) => {
-  console.log("[UPDATE] Guild Unavailable:" + " " + `${guild.name}` + " " + `(${guild.id})`);
+  console.log(chalk.blue("[UPDATE] Guild Unavailable:" + " " + `${guild.name}` + " " + `(${guild.id})`));
 });
 client.on("guildUpdate", (oldGuild, newGuild) => {
-  console.log("[UPDATE] Guild Updated: From:" + " " + `${oldGuild.name}` + " " + `(${oldGuild.id})` + " to"  + " " + `${newGuild.name}` + " " + `(${newGuild.id})`);
+  console.log(chalk.blue("[UPDATE] Guild Updated: From:" + " " + `${oldGuild.name}` + " " + `(${oldGuild.id})` + " to"  + " " + `${newGuild.name}` + " " + `(${newGuild.id})`));
 });
 
 // settings provider, using sqlite
