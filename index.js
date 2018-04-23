@@ -21,9 +21,9 @@ const client = new Commando.Client({
 });
 
 // for console logging. Usefull for debugging
-client.on("error", console.error);
-client.on("warn", console.warn);
-client.on("debug", console.log);
+client.on("error", chalk.red(console.error));
+client.on("warn", chalk.yellow(console.warn));
+client.on("debug", chalk.yellow(console.log));
 client.on("ready", () => {
 
   console.log(chalk.green(`[READY] Mei is now up and running as ${client.user.tag}`));
