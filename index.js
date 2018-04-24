@@ -21,9 +21,9 @@ const client = new Commando.Client({
 });
 
 // for console logging. Usefull for debugging
-client.on("error", chalk.red(console.error));
-client.on("warn", chalk.yellow(console.warn));
-client.on("debug", chalk.yellow(console.log));
+client.on("error", console.error);
+client.on("warn", console.warn);
+client.on("debug", console.log);
 client.on("ready", () => {
 
   console.log(chalk.green(`[READY] Mei is now up and running as ${client.user.tag}`));
@@ -69,6 +69,8 @@ client.registry.registerGroup("fun", "Fun");
 client.registry.registerGroup("reactions", "Reactions");
 client.registry.registerGroup("interactions", "Interactions");
 client.registry.registerGroup("booru", "Booru");
+client.registry.registerGroup("mod","Mod Commands");
+client.registry.registerGroup("nsfw","NSFW");
 client.registry.registerDefaults();
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
 
