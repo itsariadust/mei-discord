@@ -2,7 +2,7 @@ const Commando = require("discord.js-commando");
 const { RichEmbed } = require("discord.js");
 const Danbooru = require("danbooru");
 
-module.exports = class hentaiCommand extends Commando.Command {
+module.exports = class HentaiCommand extends Commando.Command {
 
   constructor(client) {
 
