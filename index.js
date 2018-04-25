@@ -1,6 +1,6 @@
 /*
 Mei Discord Bot
-Built with discord.js with Node
+Built with discord.js in Node
 */
 
 // required libraries. (NOTE: Some commands do have module dependencies so check them out as well)
@@ -39,7 +39,7 @@ client.on("disconnect", event => {
 client.on("commandError", (cmd, err) => {
 
   if (err instanceof Commando.FriendlyError) return;
-  console.error(chalk.red("[ERROR] Error in command $cmd.groupID:$cmd.memberName", err));
+  console.error(chalk.red("[ERROR] Error in command $Commando.groupID:$Commando.memberName", err));
 
 });
 
