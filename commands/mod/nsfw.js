@@ -17,10 +17,10 @@ module.exports = class nsfwToggleCommand extends Commando.Command {
     if (args[1] === "on") {
       if (guild.isGroupEnabled("NSFW") === false) {
         message.channel.send("Enabled!");
-        guild.setGroupEnabled("NSFW", true);
+        return guild.setGroupEnabled("NSFW", true);
       }
       if (guild.isGroupEnabled("NSFW") === true) {
-        message.channel.send("It is already enabled!");
+        return message.channel.send("It is already enabled!");
       }
     }
   }
