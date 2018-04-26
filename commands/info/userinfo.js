@@ -6,6 +6,7 @@ module.exports = class UserInfoCommand extends Commando.Command {
   constructor(client) {
     super(client, {
       name:"userinfo",
+      aliases:["info"],
       group:"info",
       memberName:"userinfo",
       description:"Displays user info.",

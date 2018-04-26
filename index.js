@@ -64,12 +64,13 @@ client.setProvider(
 
 // command group registries
 client.registry.registerGroup("core", "Core");
+client.registry.registerGroup("mod","Mod Commands");
 client.registry.registerGroup("info", "Info");
 client.registry.registerGroup("fun", "Fun");
+client.registry.registerGroup("images", "Images");
 client.registry.registerGroup("reactions", "Reactions");
 client.registry.registerGroup("interactions", "Interactions");
 client.registry.registerGroup("booru", "Booru");
-client.registry.registerGroup("mod","Mod Commands");
 client.registry.registerGroup("nsfw","NSFW");
 client.registry.registerDefaults();
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
