@@ -4,12 +4,11 @@ Built with discord.js in Node
 */
 
 // required libraries. (NOTE: Some commands do have module dependencies so check them out as well)
+require("dotenv").config();
 const Commando = require("discord.js-commando");
 const sqlite = require("sqlite");
 const path = require("path");
 const chalk = require("chalk");
-// this is just a config file (Only for the Indev version of Mei)
-const config = require("./config.json");
 
 // client
 const client = new Commando.Client({
@@ -76,4 +75,4 @@ client.registry.registerDefaults();
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
 
 // now we log in OwO
-client.login(config.token);
+client.login(process.env.BOT_TOKEN);

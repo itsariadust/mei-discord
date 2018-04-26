@@ -1,5 +1,6 @@
+require("dotenv").config();
 const Commando = require("discord.js-commando");
-const cat = require("random-cat");
+const snekfetch = require("snekfetch");
 
 module.exports = class CatCommand extends Commando.Command {
   constructor(client) {
@@ -13,8 +14,13 @@ module.exports = class CatCommand extends Commando.Command {
 
   run(message) {
     try {
-      let url = cat.get();
-      message.say(url);
+      const { body, headers } = snekfetch 
+        .get("http://thecatapi.com/api/images/get") 
+        .query({ api_key: process.env.CAT_TOKEN }); 
+      const format = headers["content-type"].replace(/image\//i, ""); 
+
+      return message.say({ files: [{ attachment: body, name: `cat.${format}` }] }); 
+
     } catch (err) {
       return message.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
     }
