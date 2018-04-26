@@ -8,7 +8,7 @@ module.exports = class smalCommand extends Commando.Command {
     super(client, {
 
       name:"slam",
-      group:"interactions",
+      group:"roleplay",
       memberName:"slam",
       description:"You have been slammed to the wall!",
 
@@ -24,10 +24,10 @@ module.exports = class smalCommand extends Commando.Command {
     const randMember = guildMembers[Math.floor(Math.random() * guildMembers.length)];
 
     if (!slammedMember) {
-      message.channel.send(message.author.username + " slams " + "<@" + randMember + ">" + " " + "to the wall!");
+      message.channel.send(message.author.username + " slams " + "<@" + randMember + ">" + "!");
     }
     else {
-      message.channel.send(message.author.username + " slams " + `${slammedMember}` + " " + "to the wall!");
+      message.channel.send(message.author.username + " slams " + `${slammedMember}` + "!");
     }
 
     const embed = new RichEmbed()

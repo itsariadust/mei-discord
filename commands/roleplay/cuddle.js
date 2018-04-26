@@ -10,7 +10,7 @@ module.exports = class cuddleCommand extends Commando.Command {
     super(client, {
 
       name: "cuddle",
-      group: "interactions",
+      group: "roleplay",
       memberName: "cuddle",
       description: "*cuddles*",
 

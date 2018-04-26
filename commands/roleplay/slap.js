@@ -8,7 +8,7 @@ module.exports = class slapCommand extends Commando.Command {
     super(client, {
 
       name:"slap",
-      group:"interactions",
+      group:"roleplay",
       memberName:"slap",
       description:"You have been slapped!",
 

@@ -68,7 +68,7 @@ client.registry.registerGroup("info", "Info");
 client.registry.registerGroup("fun", "Fun");
 client.registry.registerGroup("images", "Images");
 client.registry.registerGroup("reactions", "Reactions");
-client.registry.registerGroup("interactions", "Interactions");
+client.registry.registerGroup("roleplay", "Roleplay");
 client.registry.registerGroup("booru", "Booru");
 client.registry.registerGroup("nsfw","NSFW");
 client.registry.registerDefaults();

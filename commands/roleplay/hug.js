@@ -8,7 +8,7 @@ module.exports = class hugCommand extends Commando.Command {
     super(client, {
 
       name: "hug",
-      group: "interactions",
+      group: "roleplay",
       memberName: "hug",
       description: "*hugs*",
 
