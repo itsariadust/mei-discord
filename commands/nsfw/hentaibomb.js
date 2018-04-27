@@ -34,7 +34,7 @@ module.exports = class HentaiBombCommand extends Commando.Command {
       let i = 0;
       do {
         i = i + 1;
-        db.posts({tags: "rating:explicit" + `${tagQuery}`, random: true, limit:100}).then(posts => {
+        db.posts({tags: "rating:explicit" + `${tagQuery}`, random: true, limit:1}).then(posts => {
           const index = Math.floor(Math.random() * posts.length);
           const post = posts[index];
           const url = db.url(post.file_url);
