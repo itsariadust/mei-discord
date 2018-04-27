@@ -10,7 +10,7 @@ module.exports = class smalCommand extends Commando.Command {
       name:"slam",
       group:"roleplay",
       memberName:"slam",
-      description:"You have been slammed to the wall!",
+      description:"*slams*",
 
     });
 

@@ -10,7 +10,7 @@ module.exports = class mfCommand extends Commando.Command {
       name:"mf",
       group:"roleplay",
       memberName:"mf",
-      description:"Give the middle finger",
+      description:"*does the middle finger*",
 
     });
 

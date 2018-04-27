@@ -10,7 +10,7 @@ module.exports = class punchCommand extends Commando.Command {
       name:"punch",
       group:"roleplay",
       memberName:"punch",
-      description:"You have been punched!",
+      description:"*punches*",
 
     });
 

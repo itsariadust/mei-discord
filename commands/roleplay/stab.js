@@ -10,7 +10,7 @@ module.exports = class stabCommand extends Commando.Command {
       name:"stab",
       group:"roleplay",
       memberName:"stab",
-      description:"You have been stabbed!",
+      description:"*stabs*",
 
     });
 
