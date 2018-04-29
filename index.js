@@ -62,15 +62,17 @@ client.setProvider(
 ).catch(console.error);
 
 // command group registries
-client.registry.registerGroup("core", "Core");
-client.registry.registerGroup("mod","Mod Commands");
-client.registry.registerGroup("info", "Info");
-client.registry.registerGroup("fun", "Fun");
-client.registry.registerGroup("images", "Images");
-client.registry.registerGroup("reactions", "Reactions");
-client.registry.registerGroup("roleplay", "Roleplay");
-client.registry.registerGroup("booru", "Booru");
-client.registry.registerGroup("nsfw","NSFW");
+client.registry.registerGroups([
+  ["core","Core"],
+  ["mod","Mod"],
+  ["info","Info"],
+  ["fun","Fun"],
+  ["booru","Booru"],
+  ["images","Images"],
+  ["nsfw","NSFW"],
+  ["reactions","Reactions"],
+  ["roleplay","Roleplay"],
+]);
 client.registry.registerDefaults();
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
 
