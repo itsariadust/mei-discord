@@ -1,6 +1,6 @@
 const Commando = require("discord.js-commando");
 
-module.exports = class nsfwToggleCommand extends Commando.Command {
+module.exports = class NsfwToggleCommand extends Commando.Command {
   constructor(client) {
     super(client,{
       name:"nsfw",
@@ -21,6 +21,14 @@ module.exports = class nsfwToggleCommand extends Commando.Command {
       }
       if (guild.isGroupEnabled("NSFW") === true) {
         return message.channel.send("It is already enabled!");
+      }
+    } else if (args[1] === "off") {
+      if (guild.isGroupEnabled("NSFW") === true) {
+        message.channel.send("Enabled!");
+        return guild.setGroupEnabled("NSFW", false);
+      }
+      if (guild.isGroupEnabled("NSFW") === false) {
+        return message.channel.send("It is already disabled!");
       }
     }
   }
