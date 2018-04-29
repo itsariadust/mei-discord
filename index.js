@@ -19,7 +19,7 @@ const client = new Commando.Client({
   guildOnly: true,
 });
 
-// for console logging. Usefull for debugging
+// for console logging. Useful for debugging
 client.on("error", console.error);
 client.on("warn", console.warn);
 client.on("debug", console.log);
