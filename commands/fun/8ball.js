@@ -24,8 +24,8 @@ module.exports = class ballCommand extends Commando.Command {
 
   run(message, {question}) {
     if (`${question}`) {
+      message.say(`${question}`);
       return message.say(stripIndents`
-      ${question}
       ${answer[Math.floor(Math.random() * answer.length)]}, ${message.author.username}
       `);
     }
