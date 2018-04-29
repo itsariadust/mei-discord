@@ -1,6 +1,6 @@
 # Mei
 Mei is a discord bot built with [Discord.js](https://discordjs.org) with the [Commando](https://github.com/discordjs/Commando) command framework. This bot has 26 commands and more will be added soon. 
-## Commands (26)
+## Commands (46)
 > NOTE: More commands will be added soon
 
 ### Core
@@ -25,10 +25,10 @@ Mei is a discord bot built with [Discord.js](https://discordjs.org) with the [Co
 * **kiss**: *kisses*
 * **mf**: Give the middle finger
 * **pet/pat**: *pets*
-* **punch**: You have been punched!
-* **slam**: You have been slammed to the wall!
-* **slap**: You have been slapped!
-* **stab**: You have been stabbed!
+* **punch**: *punches*
+* **slam**: *slams*
+* **slap**: *slaps*
+* **stab**: *stabs*
 
 ### Booru
 * **danbooru**: Posts a random image from Danbooru (SFW)
@@ -44,14 +44,12 @@ For self-hosting, please follow the guide:
 * Put it somehwere
 * Fire up that terminal (For Linux) or Command Prompt to that folder
 * Do `npm install` to install all dependencies
-* Create a `config.json` file in the bot files and put:
+* Create a `.env` file in the bot files and put:
 ```
-{
-  "token":"your bot token here"
-}
+BOT_TOKEN=your_bot_token
 ```
 * After that, run `node index.js`
 * And we are done. If there's errors, pleasure report it in the [Issues](https://github.com/itsYuuki/mei-discord/issues) page
 
 ## License
-Check the LICENSE file
+Check the LICENSE.md file
