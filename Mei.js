@@ -85,7 +85,7 @@ client.on("groupStatusChange", (guild, group, enabled) => {
 
 // message events
 client.on("message", (message) => {
-  // When a tagged person is afk, this is triggered
+  // When a tagged person is afk, this event is triggered to say that the person he/she just tagged is afk
   if (message.mentions) {
     message.mentions.users.map((user) => {
       if (afk[user.id]) {
