@@ -1,6 +1,6 @@
 # Mei
 Mei is a discord bot built with [Discord.js](https://discordjs.org) with the [Commando](https://github.com/discordjs/Commando) command framework. This bot has 26 commands and more will be added soon. 
-## Commands (46)
+## Commands (59)
 > NOTE: More commands will be added soon
 
 ### Core
@@ -39,7 +39,7 @@ Mei is a discord bot built with [Discord.js](https://discordjs.org) with the [Co
 > Still needs to be updated
 
 For self-hosting, please follow the guide:
-*Make sure you have the LTS version of Node (Latest version is fine but I recommend LTS)
+* Make sure you have the LTS version of Node (Latest version is fine but I recommend LTS)
 * Download the code in the [Releases](https://github.com/itsYuuki/mei-discord/releases) page
 * Put it somehwere
 * Fire up that terminal (For Linux) or Command Prompt to that folder
