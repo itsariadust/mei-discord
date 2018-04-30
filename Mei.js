@@ -10,6 +10,7 @@ const sqlite = require("sqlite");
 const path = require("path");
 const chalk = require("chalk");
 const oneLine = require("common-tags").oneLine;
+const afk = require("./settings/afk.json");
 
 // client
 const client = new Commando.Client({
@@ -30,7 +31,7 @@ console.log("Starting up Mei...");
 // for console logging. Useful for debugging
 client.on("error", (e) => console.error(error(e)));
 client.on("warn", (e) => console.warn(warn(e)));
-client.on("debug", (e) => console.bug(debug(e)));
+client.on("debug", (e) => console.log(debug(e)));
 client.on("ready", () => {
 
   console.log(chalk.green(`[READY] Mei now up and running as ${client.user.tag}`));
@@ -82,6 +83,20 @@ client.on("groupStatusChange", (guild, group, enabled) => {
   `);
 });
 
+// message events
+client.on("message", (message) => {
+  // When a tagged person is afk, this is triggered
+  if (message.mentions) {
+    message.mentions.users.map((user) => {
+      if (afk[user.id]) {
+        if (afk[user.id].afk === true) {
+          message.channel.send(`${user.username} is AFK: ${JSON.stringify(afk[user.id].status.afkMsg)}`);
+        }
+      }
+    });
+  }
+});
+
 // non-error logging (guild updates)
 client.on("guildCreate", (guild) => {
   console.log(chalk.blue("[UPDATE] Joined Guild:" + " " + `${guild.name}` + " " + `(${guild.id})`));
@@ -112,6 +127,7 @@ client.registry.registerGroups([
   ["nsfw","NSFW"],
   ["reactions","Reactions"],
   ["roleplay","Roleplay"],
+  ["misc","Misc"]
 ]);
 client.registry.registerDefaults();
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
