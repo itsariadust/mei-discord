@@ -1,6 +1,6 @@
 /*
 Mei Discord Bot
-Built with discord.js in Node
+Built with discord.js and Commando in Node
 */
 
 // required libraries. (NOTE: Some commands do have module dependencies so check them out as well)
@@ -9,6 +9,7 @@ const Commando = require("discord.js-commando");
 const sqlite = require("sqlite");
 const path = require("path");
 const chalk = require("chalk");
+const oneLine = require("common-tags").oneLine;
 
 // client
 const client = new Commando.Client({
@@ -19,27 +20,66 @@ const client = new Commando.Client({
   guildOnly: true,
 });
 
+// consts for colors
+const error = chalk.red;
+const warn = chalk.keyword("orange");
+const debug = chalk.keyword("yellow");
+
+console.log("Starting up Mei...");
+
 // for console logging. Useful for debugging
-client.on("error", console.error);
-client.on("warn", console.warn);
-client.on("debug", console.log);
+client.on("error", (e) => console.error(error(e)));
+client.on("warn", (e) => console.warn(warn(e)));
+client.on("debug", (e) => console.bug(debug(e)));
 client.on("ready", () => {
 
-  console.log(chalk.green(`[READY] Mei is now up and running as ${client.user.tag}`));
+  console.log(chalk.green(`[READY] Mei now up and running as ${client.user.tag}`));
   client.user.setActivity(">help", ["Playing"]);
 
 });
+
 client.on("disconnect", event => {
 
   console.error(chalk.red(`[DISCONNECT] Disconnected with code ${event.code}.`));
   process.exit(0);
 
 });
+
 client.on("commandError", (cmd, err) => {
 
   if (err instanceof Commando.FriendlyError) return;
   console.error(chalk.red("[ERROR] Error in command $cmd.groupID:$cmd.memberName", err));
 
+});
+
+client.on("commandBlocked", (msg, reason) => {
+  console.log(oneLine`
+    Command ${msg.command ? `${msg.command.groupID}:${msg.command.memberName}` : ""}
+    blocked; ${reason}
+  `);
+});
+
+client.on("commandPrefixChange", (guild, prefix) => {
+  console.log(oneLine`
+    Prefix ${prefix === "" ? "removed" : `changed to ${prefix || "the default"}`}
+    ${guild ? `in guild ${guild.name} (${guild.id})` : "globally"}.
+  `);
+});
+
+client.on("commandStatusChange", (guild, command, enabled) => {
+  console.log(oneLine`
+    Command ${command.groupID}:${command.memberName}
+    ${enabled ? "enabled" : "disabled"}
+    ${guild ? `in guild ${guild.name} (${guild.id})` : "globally"}.
+  `);
+});
+
+client.on("groupStatusChange", (guild, group, enabled) => {
+  console.log(oneLine`
+    Group ${group.id}
+    ${enabled ? "enabled" : "disabled"}
+    ${guild ? `in guild ${guild.name} (${guild.id})` : "globally"}.
+  `);
 });
 
 // non-error logging (guild updates)
