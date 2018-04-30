@@ -7,6 +7,7 @@ module.exports = class NsfwToggleCommand extends Commando.Command {
       group:"mod",
       memberName:"nsfw",
       description:"Toggles NSFW commands",
+      userPermissions:["MANAGE_CHANNELS"]
     });
   }
 
