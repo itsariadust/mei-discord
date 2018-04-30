@@ -25,7 +25,7 @@ module.exports = class NsfwToggleCommand extends Commando.Command {
       }
     } else if (args[1] === "off") {
       if (guild.isGroupEnabled("NSFW") === true) {
-        message.channel.send("Enabled!");
+        message.channel.send("Disabled!");
         return guild.setGroupEnabled("NSFW", false);
       }
       if (guild.isGroupEnabled("NSFW") === false) {
