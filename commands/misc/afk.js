@@ -1,6 +1,6 @@
 const Commando = require("discord.js-commando");
 const stripIndents = require("common-tags").stripIndents;
-const afk = require("../../settings/afk.json");
+const afk = require("../../assets/json/afk.json");
 
 module.exports = class AfkCommand extends Commando.Command {
   constructor (client) {
