@@ -1,5 +1,6 @@
 const Commando = require("discord.js-commando");
 const stripIndents = require("common-tags").stripIndents;
+const modRole = require("../../assets/json/modrole.json");
 
 module.exports = class WarnCommand extends Commando.Command {
   constructor(client) {
@@ -8,7 +9,6 @@ module.exports = class WarnCommand extends Commando.Command {
       group: "mod",
       memberName: "warn",
       description: "Warns a member",
-      userPermissions: ["MANAGE_GUILD", "ADMINISTRATOR"],
       args: [{
         key: "member",
         prompt: "Please mention a member to warn",
@@ -23,15 +23,16 @@ module.exports = class WarnCommand extends Commando.Command {
     });
   }
 
-  run(message, {
-    member,
-    warningMsg
-  }) {
-    member.send(stripIndents`
-    You have been warned in the server: ${message.guild.name}!
-    By: "${message.author.tag}" 
-    "Reason: "${warningMsg}"
-    `);
-    return message.say("Done");
+  run(message, {member, warningMsg}) {
+    if (message.member.roles.some(r =>  modRole[message.guild.id].modroles.includes(r.id))) {
+      member.send(stripIndents`
+      You have been warned in the server: ${message.guild.name}!
+      By: "${message.author.tag}" 
+      "Reason: "${warningMsg}"
+      `);
+      return message.say("Done");
+    } else {
+      return message.reply("You don't have the permissions to execute this command");
+    }
   }
 };
