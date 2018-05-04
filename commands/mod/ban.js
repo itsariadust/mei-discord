@@ -30,15 +30,15 @@ module.exports = class BanCommand extends Commando.Command {
     });
   }
 
-  run(message, {member, banMsg, pruneDays}) {
+  run(message, args) {
     if (message.member.roles.some(r =>  modRole[message.guild.id].modroles.includes(r.id)) || message.author.id === message.guild.ownerID) {
-      message.guild.ban(member, {
-        days: pruneDays,
-        reason: banMsg
+      message.guild.ban(args.member, {
+        days: args.pruneDays,
+        reason: args.banMsg
       }).then(member => {
         member.send(stripIndents`
         You have been banned in the server: ${message.guild.name}!
-        "Reason: "${banMsg} -${message.author.tag}"
+        "Reason: "${args.banMsg} -${message.author.tag}"
         `);
         message.delete();
         return message.say("Done"); 
