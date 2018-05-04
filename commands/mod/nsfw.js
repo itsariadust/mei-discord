@@ -7,7 +7,14 @@ module.exports = class NsfwToggleCommand extends Commando.Command {
       group:"mod",
       memberName:"nsfw",
       description:"Toggles NSFW commands",
-      userPermissions:["MANAGE_CHANNELS"]
+      userPermissions:["MANAGE_CHANNELS"],
+      args: [
+        {
+          key:"action",
+          prompt:"What action do you wanna do? `on` or `off`?",
+          type:"string"
+        }
+      ]
     });
   }
 
@@ -15,7 +22,7 @@ module.exports = class NsfwToggleCommand extends Commando.Command {
     const guild = message.guild;
     args = message.content.split(" ");
     console.log(guild.isGroupEnabled("NSFW"));
-    if (args[1] === "on") {
+    if (args.action.toLowerCase() === "on") {
       if (guild.isGroupEnabled("NSFW") === false) {
         message.channel.send("Enabled!");
         return guild.setGroupEnabled("NSFW", true);
@@ -23,7 +30,7 @@ module.exports = class NsfwToggleCommand extends Commando.Command {
       if (guild.isGroupEnabled("NSFW") === true) {
         return message.channel.send("It is already enabled!");
       }
-    } else if (args[1] === "off") {
+    } else if (args.action.toLowerCase() === "off") {
       if (guild.isGroupEnabled("NSFW") === true) {
         message.channel.send("Disabled!");
         return guild.setGroupEnabled("NSFW", false);
