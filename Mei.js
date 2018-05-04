@@ -52,21 +52,21 @@ client.on("commandError", (cmd, err) => {
 });
 
 client.on("commandBlocked", (msg, reason) => {
-  console.log(oneLine`
+  console.log(oneLine `
     Command ${msg.command ? `${msg.command.groupID}:${msg.command.memberName}` : ""}
     blocked; ${reason}
   `);
 });
 
 client.on("commandPrefixChange", (guild, prefix) => {
-  console.log(oneLine`
+  console.log(oneLine `
     Prefix ${prefix === "" ? "removed" : `changed to ${prefix || "the default"}`}
     ${guild ? `in guild ${guild.name} (${guild.id})` : "globally"}.
   `);
 });
 
 client.on("commandStatusChange", (guild, command, enabled) => {
-  console.log(oneLine`
+  console.log(oneLine `
     Command ${command.groupID}:${command.memberName}
     ${enabled ? "enabled" : "disabled"}
     ${guild ? `in guild ${guild.name} (${guild.id})` : "globally"}.
@@ -74,7 +74,7 @@ client.on("commandStatusChange", (guild, command, enabled) => {
 });
 
 client.on("groupStatusChange", (guild, group, enabled) => {
-  console.log(oneLine`
+  console.log(oneLine `
     Group ${group.id}
     ${enabled ? "enabled" : "disabled"}
     ${guild ? `in guild ${guild.name} (${guild.id})` : "globally"}.
@@ -106,7 +106,7 @@ client.on("guildUnavailable", (guild) => {
   console.log(chalk.blue("[UPDATE] Guild Unavailable:" + " " + `${guild.name}` + " " + `(${guild.id})`));
 });
 client.on("guildUpdate", (oldGuild, newGuild) => {
-  console.log(chalk.blue("[UPDATE] Guild Updated: From:" + " " + `${oldGuild.name}` + " " + `(${oldGuild.id})` + " to"  + " " + `${newGuild.name}` + " " + `(${newGuild.id})`));
+  console.log(chalk.blue("[UPDATE] Guild Updated: From:" + " " + `${oldGuild.name}` + " " + `(${oldGuild.id})` + " to" + " " + `${newGuild.name}` + " " + `(${newGuild.id})`));
 });
 
 // settings provider, using sqlite
@@ -116,16 +116,16 @@ client.setProvider(
 
 // command group registries
 client.registry.registerGroups([
-  ["core","Core"],
-  ["mod","Mod"],
-  ["info","Info"],
-  ["fun","Fun"],
-  ["booru","Booru"],
-  ["images","Images"],
-  ["nsfw","NSFW"],
-  ["reactions","Reactions"],
-  ["roleplay","Roleplay"],
-  ["misc","Misc"]
+  ["core", "Core"],
+  ["mod", "Mod"],
+  ["info", "Info"],
+  ["fun", "Fun"],
+  ["booru", "Booru"],
+  ["images", "Images"],
+  ["nsfw", "NSFW"],
+  ["reactions", "Reactions"],
+  ["roleplay", "Roleplay"],
+  ["misc", "Misc"]
 ]);
 client.registry.registerDefaults();
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
