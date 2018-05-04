@@ -23,15 +23,19 @@ module.exports = class HentaiCommand extends Commando.Command {
             return "Invalid tag. Only type one tag for a query";
           }
         }
-      ]
+      ],
+      throttling: {
+        usages: 1,
+        duration: 60
+      }
     });
 
   }
 
-  run(message, callback, {tagQuery}) {
+  run(message, callback, args) {
     const db = new Danbooru();
 
-    db.posts({tags: "rating:explicit" + `${tagQuery}`}).then(posts => {
+    db.posts({tags: "rating:explicit" + `${args.tagQuery}`}).then(posts => {
       const index = Math.floor(Math.random() * posts.length);
       const post = posts[index];
       const url = db.url(post.file_url);

@@ -9,6 +9,10 @@ module.exports = class BoobsCommand extends Commando.Command {
       group:"nsfw",
       memberName:"boobs",
       description:"boobs OwO",
+      throttling: {
+        usages: 1,
+        duration: 60
+      }
     });
   }
 

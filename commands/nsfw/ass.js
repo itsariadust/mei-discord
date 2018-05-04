@@ -9,6 +9,10 @@ module.exports = class AssCommand extends Commando.Command {
       group:"nsfw",
       memberName:"ass",
       description:"Posts a random ass hentai image from Danbooru",
+      throttling: {
+        usages: 1,
+        duration: 60
+      }
     });
   }
 

@@ -10,6 +10,10 @@ module.exports = class BjCommand extends Commando.Command {
       group:"nsfw",
       memberName:"blowjob",
       description:"Posts a random blowjob hentai image from Danbooru",
+      throttling: {
+        usages: 1,
+        duration: 60
+      }
     });
   }
 

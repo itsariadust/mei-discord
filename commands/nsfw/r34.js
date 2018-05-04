@@ -3,18 +3,17 @@ const { RichEmbed } = require("discord.js");
 const booru = require("booru");
 
 module.exports = class Rule34Command extends Commando.Command {
-
   constructor(client) {
-
     super(client, {
-
       name: "rule34",
       group: "nsfw",
       memberName: "rule34",
       description: "Posts a random image from rule34.xxx (SFW)",
-
+      throttling: {
+        usages: 1,
+        duration: 60
+      }
     });
-
   }
 
   run(message, callback) {

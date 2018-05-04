@@ -9,6 +9,10 @@ module.exports = class TrapCommand extends Commando.Command {
       group:"nsfw",
       memberName:"trap",
       description:"Traps OwO",
+      throttling: {
+        usages: 1,
+        duration: 60
+      }
     });
   }
 

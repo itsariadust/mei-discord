@@ -9,6 +9,10 @@ module.exports = class AnalCommand extends Commando.Command {
       group:"nsfw",
       memberName:"anal",
       description:"Anal > Vaginal",
+      throttling:{
+        usages: 1,
+        duration: 60
+      }
     });
   }
 

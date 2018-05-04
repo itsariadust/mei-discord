@@ -9,6 +9,10 @@ module.exports = class FutaCommand extends Commando.Command {
       group:"nsfw",
       memberName:"futa",
       description:"Futas are the best",
+      throttling: {
+        usages: 1,
+        duration: 60
+      }
     });
   }
 

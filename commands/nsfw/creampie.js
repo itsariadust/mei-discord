@@ -8,7 +8,11 @@ module.exports = class CreampieCommand extends Commando.Command {
       name:"creampie",
       group:"nsfw",
       memberName:"creampie",
-      description:"Traps OwO",
+      description:"Creampie <3",
+      throttling: {
+        usages: 1,
+        duration: 60
+      }
     });
   }
 

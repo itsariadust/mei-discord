@@ -9,6 +9,10 @@ module.exports = class YuriCommand extends Commando.Command {
       group:"nsfw",
       memberName:"yuri",
       description:"Yuri is the best!",
+      throttling: {
+        usages: 1,
+        duration: 60
+      }
     });
   }
 

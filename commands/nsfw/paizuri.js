@@ -10,6 +10,10 @@ module.exports = class PaizuriCommand extends Commando.Command {
       group:"nsfw",
       memberName:"paizuri",
       description:"Pazuri~",
+      throttling: {
+        usages: 1,
+        duration: 60
+      }
     });
   }
 

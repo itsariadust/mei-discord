@@ -9,6 +9,10 @@ module.exports = class ExhibitionCommand extends Commando.Command {
       group:"nsfw",
       memberName:"exhibitionism",
       description:"Public lewdness is very lewd >///<",
+      throttling: {
+        usages: 1,
+        duration: 60
+      }
     });
   }
 

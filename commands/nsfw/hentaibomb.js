@@ -23,18 +23,22 @@ module.exports = class HentaiBombCommand extends Commando.Command {
             return "Invalid tag. Only one tag is allowed. Make sure you typed it out properly";
           }
         }
-      ]
+      ],
+      throttling: {
+        usages: 1,
+        duration: 60
+      }
     });
 
   }
 
-  run(message, {tagQuery}, callback) {
+  run(message, args, callback) {
     try {
       const db = new Danbooru();
       let i = 0;
       do {
         i = i + 1;
-        db.posts({tags: "rating:explicit" + `${tagQuery}`, random: true, limit:1}).then(posts => {
+        db.posts({tags: "rating:explicit" + `${args.tagQuery}`, random: true, limit:1}).then(posts => {
           const index = Math.floor(Math.random() * posts.length);
           const post = posts[index];
           const url = db.url(post.file_url);
