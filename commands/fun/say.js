@@ -1,28 +1,28 @@
-const Commando = require("discord.js-commando");
+const commando = require("discord.js-commando");
 
-module.exports = class SayCommand extends Commando.Command {
-
+class SayCommand extends commando.Command {
   constructor(client) {
     super(client, {
-      name: "say",
-      group: "fun",
-      memberName: "say",
-      description: "make the bot say something",
+      name: 'say',
+      group: 'fun',
+      memberName: 'say',
+      description: 'Sends a message through ara, then deletes the previous message sent.',
       args: [{
-        key: "text",
-        prompt: "Make the bot say something",
-        type: "string",
-      }],
+        key: 'text',
+        prompt: 'What do you want me to say?',
+        type: 'string'
+      }]
     });
   }
-
-  run(message, args) {
+  async run(message, args) {
     if (message.mentions.channels.first()) {
       message.delete().catch(console.error);
       message.mentions.channels.first().send(args.text.split(" ").slice(1).join(" "));
     } else {
-      message.send(args.text);
+      message.say(args.text);
       message.delete().catch(console.error);
     }
   }
-};
+}
+
+module.exports = SayCommand;
