@@ -24,7 +24,7 @@ module.exports = class WarnCommand extends Commando.Command {
   }
 
   run(message, {member, warningMsg}) {
-    if (message.member.roles.some(r =>  modRole[message.guild.id].modroles.includes(r.id))) {
+    if (message.member.roles.some(r =>  modRole[message.guild.id].modroles.includes(r.id)) || message.author.id === message.guild.ownerID) {
       member.send(stripIndents`
       You have been warned in the server: ${message.guild.name}!
       By: "${message.author.tag}" 
