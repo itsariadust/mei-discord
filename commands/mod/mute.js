@@ -27,6 +27,7 @@ module.exports = class MuteCommand extends Commando.Command {
   }
 
   run(message, args) {
+    if (!modRole[message.guild.id]) return message.reply("There are no roles set up for this comamnd to run");
     if (message.member.roles.some(r => modRole[message.guild.id].modroles.includes(r.id)) || message.author.id === message.guild.ownerID) {
       if (!message.guild.roles.find("name", "Muted")) {
         let muteRole = message.guild.createRole({
