@@ -12,7 +12,7 @@ module.exports = class PurgeCommand extends Commando.Command {
       args: [{
         key:"number",
         prompt:"How many message do you want to delete?",
-        type:"number"
+        type:"float"
       }]
     });
   }
