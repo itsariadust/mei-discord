@@ -18,7 +18,8 @@ module.exports = class KickCommand extends Commando.Command {
       {
         key: "kickMsg",
         prompt: "Please enter a kick reason.",
-        type: "string"
+        type: "string",
+        default: ""
       },
       ]
     });
