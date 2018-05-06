@@ -16,7 +16,6 @@ module.exports = class MuteCommand extends Commando.Command {
         type: "member",
       },
       {
-
         key: "time",
         prompt: "How long would you like to mute the user for? (Only hours, minutes, or seconds are accepted, no mix of the two or three)",
         type: "string",
@@ -42,6 +41,7 @@ module.exports = class MuteCommand extends Commando.Command {
           });
         });
         if (args.time) {
+          message.reply(`Done. Timeout will end in ${args.time}`);
           setTimeout(() => {
             args.member.removeRole(muteRole.id);
             return message.reply(`Tiemout ended, unmuted ${args.member}`);
