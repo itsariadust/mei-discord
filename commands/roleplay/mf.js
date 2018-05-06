@@ -30,7 +30,7 @@ module.exports = class mfCommand extends Commando.Command {
 
     const embed = new RichEmbed()
       .setImage(mf[Math.floor(Math.random() * mf.length)]);
-    message.channel.send({ embed });
+    message.channel.send({embed});
 
   }
 

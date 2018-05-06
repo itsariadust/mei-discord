@@ -32,9 +32,7 @@ module.exports = class glareCommand extends Commando.Command {
 
     const embed = new RichEmbed()
       .setImage(glareIndex[Math.floor(Math.random() * glareIndex.length)]);
-    message.channel.send({
-      embed,
-    });
+    message.channel.send({embed});
 
   }
 

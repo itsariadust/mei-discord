@@ -32,9 +32,7 @@ module.exports = class pokeCommand extends Commando.Command {
 
     const embed = new RichEmbed()
       .setImage(pokeIndex[Math.floor(Math.random() * pokeIndex.length)]);
-    message.channel.send({
-      embed,
-    });
+    message.channel.send({embed});
 
   }
 

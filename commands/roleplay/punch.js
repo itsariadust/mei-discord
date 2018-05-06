@@ -32,7 +32,7 @@ module.exports = class punchCommand extends Commando.Command {
 
     const embed = new RichEmbed()
       .setImage(punch[Math.floor(Math.random() * punch.length)]);
-    message.channel.send({ embed });
+    message.channel.send({embed});
 
   }
 

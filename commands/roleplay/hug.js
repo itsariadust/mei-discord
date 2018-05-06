@@ -32,9 +32,7 @@ module.exports = class hugCommand extends Commando.Command {
 
     const embed = new RichEmbed()
       .setImage(hugIndex[Math.floor(Math.random() * hugIndex.length)]);
-    message.channel.send({
-      embed,
-    });
+    message.channel.send({embed});
 
   }
 

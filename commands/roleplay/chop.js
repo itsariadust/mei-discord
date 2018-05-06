@@ -32,9 +32,7 @@ module.exports = class chopCommand extends Commando.Command {
 
     const embed = new RichEmbed()
       .setImage(chopIndex[Math.floor(Math.random() * chopIndex.length)]);
-    message.channel.send({
-      embed,
-    });
+    message.channel.send({embed});
 
   }
 

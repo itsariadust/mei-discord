@@ -33,9 +33,7 @@ module.exports = class petCommand extends Commando.Command {
 
     const embed = new RichEmbed()
       .setImage(petIndex[Math.floor(Math.random() * petIndex.length)]);
-    message.channel.send({
-      embed,
-    });
+    message.channel.send({embed});
 
   }
 

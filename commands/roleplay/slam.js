@@ -32,7 +32,7 @@ module.exports = class smalCommand extends Commando.Command {
 
     const embed = new RichEmbed()
       .setImage(slam[Math.floor(Math.random() * slam.length)]);
-    message.channel.send({ embed });
+    message.channel.send({embed});
 
   }
 

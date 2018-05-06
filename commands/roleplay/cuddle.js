@@ -34,9 +34,7 @@ module.exports = class cuddleCommand extends Commando.Command {
 
     const embed = new RichEmbed()
       .setImage(cuddleIndex[Math.floor(Math.random() * cuddleIndex.length)]);
-    message.channel.send({
-      embed,
-    });
+    message.channel.send({embed});
 
   }
 
