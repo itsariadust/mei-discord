@@ -1,11 +1,8 @@
 const Commando = require("discord.js-commando");
 
 module.exports = class rateWaifuCommand extends Commando.Command {
-
   constructor(client) {
-
     super(client, {
-
       name:"ratewaifu",
       group:"fun",
       memberName:"ratewaifu",
@@ -17,17 +14,12 @@ module.exports = class rateWaifuCommand extends Commando.Command {
           type:"string",
         },
       ],
-
     });
-
   }
 
   run(message, args) {
-
     const { waifu } = args;
     const waifuRate = Math.floor(Math.random() * 100);
-    message.say("I would rate" + " " + waifu + " " + "a" + " " + waifuRate + "%");
-
+    message.say(`I would rate ${waifu} a ${waifuRate}%`);
   }
-
 };

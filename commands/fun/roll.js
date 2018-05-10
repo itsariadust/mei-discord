@@ -3,7 +3,6 @@ const Commando = require("discord.js-commando");
 module.exports = class RollCommand extends Commando.Command {
 
   constructor(client) {
-
     super(client, {
       name: "roll",
       group: "fun",
@@ -14,10 +13,7 @@ module.exports = class RollCommand extends Commando.Command {
   }
 
   run(message) {
-
     const roll = Math.floor(Math.random() * 6) + 1;
-    message.reply("You rolled a " + roll + "!");
-
+    message.reply(`You rolled a ${roll}!`);
   }
-
 }

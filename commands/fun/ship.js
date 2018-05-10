@@ -2,11 +2,8 @@ const Commando = require("discord.js-commando");
 const { RichEmbed } = require("discord.js");
 
 module.exports = class shipCommand extends Commando.Command {
-
   constructor(client) {
-
     super(client, {
-
       name:"ship",
       group:"fun",
       memberName:"ship",
@@ -23,16 +20,12 @@ module.exports = class shipCommand extends Commando.Command {
           type:"member",
         },
       ],
-
     });
-
   }
 
   run(message, args, callback) {
-
     const love = Math.floor(Math.random() * 100);
     let ship;
-    args = message.content.split(" ");
 
     if (love == 100) {
       ship = "Perfect and lovely couple! <3 <3 <3";
@@ -52,8 +45,8 @@ module.exports = class shipCommand extends Commando.Command {
 
     const embed = new RichEmbed();
     embed.setTitle("~Ship Analysis~");
-    embed.addField("Shipped Members", args[1] + " & " + args[2]);
-    embed.addField("Ship Value", love + "%" + " " + ship);
+    embed.addField("Shipped Members", `${args.shipUser1} & ${args.shipUser2}`);
+    embed.addField("Ship Value", `${love}%\n ${ship}`);
     return message.embed(embed).then(callback);
   }
 
