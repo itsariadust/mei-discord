@@ -54,12 +54,12 @@ module.exports = class ModRoleCommand extends Commando.Command {
         return message.reply(`There are no roles listed for mod commands. Please add by using \`${message.guild.commandPrefix}modrole add <Role>\``);
       }
 
-      let roleIndex = modRole[message.guild.id].modroles.indexOf(args.role);
+      let role = modRole[message.guild.id].modroles.indexOf(args.role);
 
-      if (roleIndex === null) {
+      if (role === null) {
         return message.reply("Role not found. Perhaps you misspelled it or you didn't list it in");
       }
-      modRole[message.guild.id].modroles.splice(roleIndex, 1);
+      modRole[message.guild.id].modroles.splice(role, 1);
       fs.writeFile("./assets/json/modrole.json", JSON.stringify(modRole, null, 2), (err) => {
         if (err) {
           message.reply("Something went wrong! Contact Eris#6753");
