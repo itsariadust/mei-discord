@@ -2,7 +2,7 @@
   "name": "mei-discord",
   "version": "2.0.0-alpha-2",
   "description": "An interactive discord bot",
-  "main": "index.js",
+  "main": "Mei.js",
   "engines": {
     "node": "8.11.1",
     "npm": "5.6.0"
@@ -31,7 +31,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node Mei.js"
   },
   "repository": {
     "type": "git",
