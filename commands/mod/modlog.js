@@ -9,7 +9,7 @@ module.exports = class ModLogSetCommand extends Commando.Command {
       description: "Sets the modlog channel for the moderator commands",
       args: [{
         key: "action",
-        promp: "What action would you like to perform? `add` or `remove`",
+        prompt: "What action would you like to perform? `add` or `remove`",
         type: "string"
       }]
     });
