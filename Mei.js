@@ -47,7 +47,7 @@ client.on("disconnect", event => {
 client.on("commandError", (cmd, err) => {
 
   if (err instanceof Commando.FriendlyError) return;
-  console.error(chalk.red("[ERROR] Error in command $cmd.groupID:$cmd.memberName", err));
+  console.error(chalk.red(`[ERROR] Error in command ${cmd.groupID}:${cmd.memberName}`, err));
 
 });
 
