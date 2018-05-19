@@ -30,9 +30,8 @@ module.exports = class shipCommand extends Commando.Command {
 
   run (message, args, callback) {
 
-    var love = Math.floor(Math.random() * 100);
-    var ship;
-    args = message.content.split(" ");
+    let love = Math.floor(Math.random() * 100);
+    let ship;
 
     if (love == 100) {
       ship = "Perfect and lovely couple! <3 <3 <3";
@@ -48,7 +47,7 @@ module.exports = class shipCommand extends Commando.Command {
 
     const embed = new RichEmbed();
     embed.setTitle("~Ship Analysis~");
-    embed.addField("Shipped Members", args[1] + " & " + args[2]);
+    embed.addField("Shipped Members", args.shipUser1 + " & " + args.shipUser2);
     embed.addField("Ship Value", love + "%" + " " + ship);
     return message.embed(embed).then(callback);
   }
