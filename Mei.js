@@ -10,7 +10,7 @@ const sqlite = require("sqlite");
 const path = require("path");
 const chalk = require("chalk");
 const oneLine = require("common-tags").oneLine;
-const afk = require("./assets/json/afk.json");
+const afk = require("./assets/json/settings/afk.json");
 
 // client
 const client = new Commando.Client({

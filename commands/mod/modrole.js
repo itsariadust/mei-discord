@@ -1,5 +1,5 @@
 const Commando = require("discord.js-commando");
-const modRole = require("../../assets/json/modrole.json");
+const modRole = require("../../assets/json/settings/modrole.json");
 const fs = require("fs");
 
 module.exports = class ModRoleCommand extends Commando.Command {
@@ -38,7 +38,7 @@ module.exports = class ModRoleCommand extends Commando.Command {
         return message.reply("The mod role has already been added.");
       } else {
         modRole[message.guild.id].modroles.push(id);
-        fs.writeFile("./assets/json/modrole.json", JSON.stringify(modRole, null, 2), (err) => {
+        fs.writeFile("./assets/json/settings/modrole.json", JSON.stringify(modRole, null, 2), (err) => {
           if (err) {
             message.reply("Something went wrong! Contact Eris#6753");
             return console.log(err);
@@ -60,7 +60,7 @@ module.exports = class ModRoleCommand extends Commando.Command {
         return message.reply("Role not found. Perhaps you misspelled it or you didn't list it in");
       }
       modRole[message.guild.id].modroles.splice(role, 1);
-      fs.writeFile("./assets/json/modrole.json", JSON.stringify(modRole, null, 2), (err) => {
+      fs.writeFile("./assets/json/settings/modrole.json", JSON.stringify(modRole, null, 2), (err) => {
         if (err) {
           message.reply("Something went wrong! Contact Eris#6753");
           return console.log(err);
