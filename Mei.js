@@ -12,6 +12,11 @@ const chalk = require("chalk");
 const oneLine = require("common-tags").oneLine;
 const afk = require("./assets/json/settings/afk.json");
 
+// consts for colors
+const error = chalk.red;
+const warn = chalk.keyword("orange");
+const debug = chalk.keyword("yellow");
+
 // client
 const client = new Commando.Client({
   owner: "175565380981358592",
@@ -20,11 +25,6 @@ const client = new Commando.Client({
   unknownCommandResponse: false,
   guildOnly: true,
 });
-
-// consts for colors
-const error = chalk.red;
-const warn = chalk.keyword("orange");
-const debug = chalk.keyword("yellow");
 
 console.log("Starting up Mei...");
 
