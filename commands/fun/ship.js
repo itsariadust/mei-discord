@@ -27,7 +27,7 @@ module.exports = class shipCommand extends Commando.Command {
     const love = Math.floor(Math.random() * 100);
     let ship;
 
-    if (love == 100) {
+    if (love === 100) {
       ship = "Perfect and lovely couple! <3 <3 <3";
     }
     else if (love >= 75) {
