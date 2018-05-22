@@ -2,26 +2,19 @@ const Commando = require("discord.js-commando");
 const { RichEmbed } = require("discord.js");
 
 module.exports = class glareCommand extends Commando.Command {
-
   constructor(client) {
-
     super(client, {
-
       name: "glare",
       group: "roleplay",
       memberName: "glare",
       description: "*glares*",
-
     });
-
   }
 
   run(message) {
-
     const glareIndex = ["https://i.imgur.com/cahrSlM.png"];
     const member = message.mentions.members.first();
-    const guildMembers = message.guild.members.map(gm => gm.id);
-    const randMember = guildMembers[Math.floor(Math.random() * guildMembers.length)];
+    const randMember = message.guild.members.random().id;
 
     if (!member) {
       message.channel.send(message.author.username + " hugs " + "<@" + randMember + ">");

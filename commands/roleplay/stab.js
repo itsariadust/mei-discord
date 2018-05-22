@@ -19,15 +19,14 @@ module.exports = class stabCommand extends Commando.Command {
   run(message) {
 
     const stab = ["https://media1.tenor.com/images/aebaa1a854ea1fc04286a8729b3b6cf4/tenor.gif?itemid=5381666"];
-    const stabbedMember = message.mentions.members.first();
-    const guildMembers = message.guild.members.map(gm => gm.id);
-    const randMember = guildMembers[Math.floor(Math.random() * guildMembers.length)];
+    const member = message.mentions.members.first();
+    const randMember = message.guild.members.random().id;
 
-    if (!stabbedMember) {
+    if (!member) {
       message.channel.send(message.author.username + " stabs " + "<@" + randMember + ">");
     }
     else {
-      message.channel.send(message.author.username + " stabs " + `${stabbedMember}`);
+      message.channel.send(message.author.username + " stabs " + `${member}`);
     }
 
     const embed = new RichEmbed()
