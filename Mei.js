@@ -39,7 +39,7 @@ client.on("ready", () => {
 
 });
 
-client.on("disconnect", event => {
+client.on("disconnect", (event) => {
   console.error(chalk.red(`[DISCONNECT] Disconnected with code ${event.code}. Attempting to reconnect...`));
   process.exit(0);
 });
