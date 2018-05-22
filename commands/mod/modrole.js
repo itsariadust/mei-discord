@@ -41,7 +41,7 @@ module.exports = class ModRoleCommand extends Commando.Command {
         fs.writeFile("./assets/json/settings/modrole.json", JSON.stringify(modRole, null, 2), (err) => {
           if (err) {
             message.reply("Something went wrong! Contact Eris#6753");
-            return console.log(err);
+            return console.error(err);
           }
           return message.reply("Mod role added.");
         });
@@ -63,7 +63,7 @@ module.exports = class ModRoleCommand extends Commando.Command {
       fs.writeFile("./assets/json/settings/modrole.json", JSON.stringify(modRole, null, 2), (err) => {
         if (err) {
           message.reply("Something went wrong! Contact Eris#6753");
-          return console.log(err);
+          return console.error(err);
         }
         return message.reply("Mod role removed.");
       });

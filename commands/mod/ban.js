@@ -1,6 +1,6 @@
 const Commando = require("discord.js-commando");
 const stripIndents = require("common-tags").stripIndents;
-const modRole = require("../../assets/json/modrole.json");
+const modRole = require("../../assets/json/settings/modrole.json");
 
 module.exports = class BanCommand extends Commando.Command {
   constructor(client) {

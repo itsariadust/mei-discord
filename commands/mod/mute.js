@@ -1,5 +1,5 @@
 const Commando = require("discord.js-commando");
-const modRole = require("../../assets/json/modrole.json");
+const modRole = require("../../assets/json/settings/modrole.json");
 const ms = require("ms");
 
 module.exports = class MuteCommand extends Commando.Command {
