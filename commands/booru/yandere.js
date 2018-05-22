@@ -21,7 +21,7 @@ module.exports = class yandereCommand extends Commando.Command {
 
     booru.search("yd", ["rating:safe"], { limit:1, random:true })
       .then(booru.commonfy)
-      .then(images => {
+      .then((images) => {
         for (const image of images) {
           const url = image.common.file_url;
           const embed = new RichEmbed();
