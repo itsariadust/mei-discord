@@ -1,5 +1,7 @@
 # Mei
-Mei is a discord bot built with [Discord.js](https://discordjs.org) with the [Commando](https://github.com/discordjs/Commando) command framework. This bot has 26 commands and more will be added soon. 
+https://david-dm.org/itsYuuki/mei-discord.svg
+
+Mei is a discord bot built with [Discord.js](https://discordjs.org) with the [Commando](https://github.com/discordjs/Commando) command framework. This bot has 26 commands and more will be added soon.
 ## Commands (59)
 > NOTE: More commands will be added soon
 
