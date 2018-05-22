@@ -11,7 +11,7 @@ class SmugCommand extends commando.Command {
   }
   run(message) {
     message.delete().catch(console.error);
-    var imgNo = Math.floor(Math.random() * 58) + 1;
+    const imgNo = Math.floor(Math.random() * 58) + 1;
     message.channel.send("http://smug.moe/smg/" + imgNo + ".png");
   }
 }
