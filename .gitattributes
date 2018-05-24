@@ -1,10 +1,11 @@
 # Text Files
-*.js text eol=lf
-*.json text eol=lf
-*.md text eol=lf
-*.yml text eol=lf
+*.js text eol=crlf
+*.json text eol=crlf
+*.md text eol=crlf
+*.yml text eol=crlf
 
 # Configs and Stuff
-.gitattributes text eol=lf
-.gitignore text eol=lf
-.npmrc text eol=lf
+.gitattributes text eol=crlf
+.gitignore text eol=crlf
+
+*.sqlite3 binary
