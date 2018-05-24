@@ -1,4 +1,5 @@
 # Mei
+[![Build Status](https://travis-ci.com/itsYuuki/mei-discord.svg?branch=develop)](https://travis-ci.com/itsYuuki/mei-discord)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b0f6e6707b3e495f8a016a18ca72483e)](https://www.codacy.com/app/itsYuuki/mei-discord?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=itsYuuki/mei-discord&amp;utm_campaign=Badge_Grade)
 ![David](https://david-dm.org/itsYuuki/mei-discord.svg)
 
