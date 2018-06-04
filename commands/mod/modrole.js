@@ -54,9 +54,9 @@ module.exports = class ModRoleCommand extends Commando.Command {
         return message.reply(`There are no roles listed for mod commands. Please add by using \`${message.guild.commandPrefix}modrole add <Role>\``);
       }
 
-      let role = modRole[message.guild.id].modroles.indexOf(args.role);
+      let role = modRole[message.guild.id].modroles.includes(args.role.id);
 
-      if (role === null) {
+      if (role === false) {
         return message.reply("Role not found. Perhaps you misspelled it or you didn't list it in");
       }
       modRole[message.guild.id].modroles.splice(role, 1);
