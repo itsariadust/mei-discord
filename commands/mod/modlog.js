@@ -7,7 +7,7 @@ module.exports = class ModLogSetCommand extends Commando.Command {
       name: "modlog",
       group: "mod",
       memberName: "modlog",
-      description: "Sets the modlog channel for the moderator commands",
+      description: "Sets the modlog channel for the moderator command output",
       args: [{
         key: "action",
         prompt: "What action would you like to perform? `add` or `remove`",
@@ -26,7 +26,7 @@ module.exports = class ModLogSetCommand extends Commando.Command {
 
         let channelID = channel.id;
         message.guild.settings.set("modlog", channelID);
-        return message.reply(`Done. Set the mod log channel to "<#${message.guild.settings.get("modlog")}>"`);
+        return message.reply(`Done. Modlog channel set to "<#${message.guild.settings.get("modlog")}>"`);
       }
 
       if (args.action.toLowerCase() === "remove") {
@@ -34,7 +34,7 @@ module.exports = class ModLogSetCommand extends Commando.Command {
         return message.reply(`Done. Removed the modlog channel. Do \`${message.guild.commandPrefix}settings add modlog\` to set a new channel for modlogging`);
       }
     } else {
-      return message.reply("You don't have the permissions to run this command. Do you have the roles for the moderator commands? Please contact the server oewner to fix this");
+      return message.reply("You don't have the permissions to run this command. Do you have the roles for the moderator commands? Please contact the server owner to fix this");
     }
   }
 };
