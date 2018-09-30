@@ -36,7 +36,7 @@ module.exports = class KickCommand extends Commando.Command {
     if (!member.kickable) return message.reply("**Error:** User can't be kicked out. Make sure that my highest role is above the user you are trying to kick.");
 
     member.kick(kickMsg).then(member => {
-      if (typeof kickMsg !== "undefined") {
+      if (kickMsg !== "") {
         member.send(stripIndents `
         You have been kicked in the server: ${message.guild.name}!
         Reason: "${kickMsg}"`);
