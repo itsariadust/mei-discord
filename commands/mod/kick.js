@@ -9,7 +9,6 @@ module.exports = class KickCommand extends Commando.Command {
       group: "mod",
       memberName: "kick",
       description: "kicks a member",
-      clientPermissions: ["KICK_MEMBERS"],
       args: [{
         key: "member",
         prompt: "Please mention a member to ban",
@@ -26,18 +25,26 @@ module.exports = class KickCommand extends Commando.Command {
   }
 
   run(message, args) {
-    if (!modRole[message.guild.id]) return message.reply("There are no roles set up for this comamnd to run");
-    if (message.member.roles.some(r => modRole[message.guild.id].modroles.includes(r.id)) || message.author.id === message.guild.ownerID) {
-      message.guild.member(args.member).kick(args.kickMsg).then(member => {
-        member.send(stripIndents `
-        You have been kicked in the server: ${message.guild.name}!
-        "Reason: "${args.banMsg} -${message.author.tag}"
-        `);
-        message.delete();
-        return message.say("Done");
-      });
-    } else {
+    const { member, kickMsg } = args;
+
+    if (!modRole[message.guild.id]) return message.reply("There are no roles set up for this command to run");
+    if (!message.member.roles.some(r => modRole[message.guild.id].modroles.includes(r.id)) && message.author.id !== message.guild.ownerID) {
       return message.reply("You don't have the permissions to execute this command");
     }
+    if (!message.guild.me.permissions.has("KICK_MEMBERS")) return message.reply("Can't kick anyone. I need the **Kick Members** permission.");
+    if (member.user.id === this.client.user.id) return message.reply("Why would I kick myself? Do it manually.");
+    if (!member.kickable) return message.reply("**Error:** User can't be kicked out. Make sure that my highest role is above the user you are trying to kick.");
+
+    member.kick(kickMsg).then(member => {
+      if (typeof kickMsg !== "undefined") {
+        member.send(stripIndents `
+        You have been kicked in the server: ${message.guild.name}!
+        Reason: "${kickMsg}"`);
+      } else {
+        member.send(`You have been kicked from ${message.guild.name}`);
+      }
+      message.delete();
+      return message.say(`Done. ${member.user.username}#${member.user.discriminator} has been kicked.`);
+    });
   }
 };
