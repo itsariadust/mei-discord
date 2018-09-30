@@ -29,85 +29,76 @@ const client = new Commando.Client({
 console.log("Starting up Mei...");
 
 // for console logging. Useful for debugging
-client.on("error", (e) => console.error(error(e)));
-client.on("warn", (e) => console.warn(warn(e)));
-client.on("debug", (e) => console.log(debug(e)));
-client.on("ready", () => {
+client
+  .on("error", (e) => console.error(error(e)))
+  .on("warn", (e) => console.warn(warn(e)))
+  .on("debug", (e) => console.log(debug(e)))
+  .on("ready", () => {
+    console.log(chalk.green(`[READY] Mei now up and running as ${client.user.tag}`));
+    client.user.setActivity(">help", ["Playing"]);
+  })
+  .on("disconnect", (event) => {
+    console.error(chalk.red(`[DISCONNECT] Disconnected with code ${event.code}. Attempting to reconnect...`));
+    process.exit(0);
+  })
+  .on("commandError", (cmd, err) => {
+    if (err instanceof Commando.FriendlyError) return;
+    console.error(chalk.red(`[ERROR] Error in command ${cmd.groupID}:${cmd.memberName}`, err));
+  })
 
-  console.log(chalk.green(`[READY] Mei now up and running as ${client.user.tag}`));
-  client.user.setActivity(">help", ["Playing"]);
-
-});
-
-client.on("disconnect", (event) => {
-  console.error(chalk.red(`[DISCONNECT] Disconnected with code ${event.code}. Attempting to reconnect...`));
-  process.exit(0);
-});
-
-client.on("commandError", (cmd, err) => {
-
-  if (err instanceof Commando.FriendlyError) return;
-  console.error(chalk.red(`[ERROR] Error in command ${cmd.groupID}:${cmd.memberName}`, err));
-
-});
-
-client.on("commandBlocked", (msg, reason) => {
-  console.log(oneLine `
+  .on("commandBlocked", (msg, reason) => {
+    console.log(oneLine `
     Command ${msg.command ? `${msg.command.groupID}:${msg.command.memberName}` : ""}
-    blocked; ${reason}
-  `);
-});
+    blocked; ${reason}`);
+  })
 
-client.on("commandPrefixChange", (guild, prefix) => {
-  console.log(oneLine `
+  .on("commandPrefixChange", (guild, prefix) => {
+    console.log(oneLine `
     Prefix ${prefix === "" ? "removed" : `changed to ${prefix || "the default"}`}
-    ${guild ? `in guild ${guild.name} (${guild.id})` : "globally"}.
-  `);
-});
+    ${guild ? `in guild ${guild.name} (${guild.id})` : "globally"}.`);
+  })
 
-client.on("commandStatusChange", (guild, command, enabled) => {
-  console.log(oneLine `
+  .on("commandStatusChange", (guild, command, enabled) => {
+    console.log(oneLine `
     Command ${command.groupID}:${command.memberName}
     ${enabled ? "enabled" : "disabled"}
-    ${guild ? `in guild ${guild.name} (${guild.id})` : "globally"}.
-  `);
-});
+    ${guild ? `in guild ${guild.name} (${guild.id})` : "globally"}.`);
+  })
 
-client.on("groupStatusChange", (guild, group, enabled) => {
-  console.log(oneLine `
+  .on("groupStatusChange", (guild, group, enabled) => {
+    console.log(oneLine `
     Group ${group.id}
     ${enabled ? "enabled" : "disabled"}
-    ${guild ? `in guild ${guild.name} (${guild.id})` : "globally"}.
-  `);
-});
+    ${guild ? `in guild ${guild.name} (${guild.id})` : "globally"}.`);
+  })
 
 // message events
-client.on("message", (message) => {
+  .on("message", (message) => {
   // When a tagged person is afk, this event is triggered to say that the person he/she just tagged is afk
-  if (message.mentions) {
-    message.mentions.users.map((user) => {
-      if (afk[user.id]) {
-        if (afk[user.id].afk === true) {
-          message.channel.send(`${user.username} is AFK: ${JSON.stringify(afk[user.id].status.afkMsg)}`);
+    if (message.mentions) {
+      message.mentions.users.map((user) => {
+        if (afk[user.id]) {
+          if (afk[user.id].afk === true) {
+            message.channel.send(`${user.username} is AFK: ${JSON.stringify(afk[user.id].status.afkMsg)}`);
+          }
         }
-      }
-    });
-  }
-});
+      });
+    }
+  })
 
 // non-error logging (guild updates)
-client.on("guildCreate", (guild) => {
-  console.log(chalk.blue("[UPDATE] Joined Guild:" + " " + `${guild.name}` + " " + `(${guild.id})`));
-});
-client.on("guildDelete", (guild) => {
-  console.log(chalk.blue("[UPDATE] Left Guild:" + " " + `${guild.name}` + " " + `(${guild.id})`));
-});
-client.on("guildUnavailable", (guild) => {
-  console.log(chalk.blue("[UPDATE] Guild Unavailable:" + " " + `${guild.name}` + " " + `(${guild.id})`));
-});
-client.on("guildUpdate", (oldGuild, newGuild) => {
-  console.log(chalk.blue("[UPDATE] Guild Updated: From:" + " " + `${oldGuild.name}` + " " + `(${oldGuild.id})` + " to" + " " + `${newGuild.name}` + " " + `(${newGuild.id})`));
-});
+  .on("guildCreate", (guild) => {
+    console.log(chalk.blue("[UPDATE] Joined Guild:" + " " + `${guild.name}` + " " + `(${guild.id})`));
+  })
+  .on("guildDelete", (guild) => {
+    console.log(chalk.blue("[UPDATE] Left Guild:" + " " + `${guild.name}` + " " + `(${guild.id})`));
+  })
+  .on("guildUnavailable", (guild) => {
+    console.log(chalk.blue("[UPDATE] Guild Unavailable:" + " " + `${guild.name}` + " " + `(${guild.id})`));
+  })
+  .on("guildUpdate", (oldGuild, newGuild) => {
+    console.log(chalk.blue("[UPDATE] Guild Updated: From:" + " " + `${oldGuild.name}` + " " + `(${oldGuild.id})` + " to" + " " + `${newGuild.name}` + " " + `(${newGuild.id})`));
+  });
 
 // settings provider, using sqlite
 client.setProvider(
@@ -115,20 +106,21 @@ client.setProvider(
 ).catch(console.error);
 
 // command group registries
-client.registry.registerGroups([
-  ["core", "Core"],
-  ["mod", "Mod"],
-  ["info", "Info"],
-  ["fun", "Fun"],
-  ["booru", "Booru"],
-  ["images", "Images"],
-  ["nsfw", "NSFW"],
-  ["reactions", "Reactions"],
-  ["roleplay", "Roleplay"],
-  ["misc", "Misc"]
-]);
-client.registry.registerDefaults();
-client.registry.registerCommandsIn(path.join(__dirname, "commands"));
+client.registry
+  .registerGroups([
+    ["core", "Core"],
+    ["mod", "Mod"],
+    ["info", "Info"],
+    ["fun", "Fun"],
+    ["booru", "Booru"],
+    ["images", "Images"],
+    ["nsfw", "NSFW"],
+    ["reactions", "Reactions"],
+    ["roleplay", "Roleplay"],
+    ["misc", "Misc"]
+  ])
+  .registerDefaults()
+  .registerCommandsIn(path.join(__dirname, "commands"));
 
 // now we log in OwO
 client.login(process.env.BOT_TOKEN);
