@@ -31,21 +31,28 @@ module.exports = class BanCommand extends Commando.Command {
   }
 
   run(message, args) {
-    if (!modRole[message.guild.id]) return message.reply("There are no roles set up for this comamnd to run");
+    const { member, banMsg, pruneDays } = args;
+
+    if (!modRole[message.guild.id]) return message.reply("There are no roles set up for this command to run");
+    if (!message.member.roles.some(r => modRole[message.guild.id].modroles.includes(r.id)) && message.author.id !== message.guild.ownerID) {
+      return message.reply("You don't have the permissions to execute this command");
+    }
+    if (!message.guild.me.permissions.has("BAN_MEMBERS")) return message.reply("Can't ban anyone. I need the **Ban Members** permission.");
+    if (member.user.id === this.client.user.id) return message.reply("Why would I ban myself? Do it manually.");
+    if (!member.kickable) return message.reply("**Error:** User can't be banned. Make sure that my highest role is above the user you are trying to kick.");
+
     if (message.member.roles.some(r =>  modRole[message.guild.id].modroles.includes(r.id)) || message.author.id === message.guild.ownerID) {
-      message.guild.ban(args.member, {
-        days: args.pruneDays,
-        reason: args.banMsg
+      message.guild.ban(member, {
+        days: pruneDays,
+        reason: banMsg
       }).then(member => {
         member.send(stripIndents`
         You have been banned in the server: ${message.guild.name}!
-        "Reason: "${args.banMsg} -${message.author.tag}"
+        "Reason: "${banMsg}"
         `);
         message.delete();
         return message.say("Done"); 
       });
-    } else {
-      return message.reply("You don't have the permissions to execute this command");
     }
   }
 };
