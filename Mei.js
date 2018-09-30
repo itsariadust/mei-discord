@@ -123,4 +123,4 @@ client.registry
   .registerCommandsIn(path.join(__dirname, "commands"));
 
 // now we log in OwO
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN).catch(console.error);
