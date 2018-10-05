@@ -13,8 +13,7 @@ module.exports = class AfkCommand extends Commando.Command {
         {
           key:"afkMsg",
           prompt:"What is your AFK message",
-          type:"string",
-          default:""
+          type:"string"
         }
       ]
     });
