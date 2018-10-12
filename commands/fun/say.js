@@ -1,24 +1,17 @@
 const Commando = require("discord.js-commando");
 
-const client = new Commando.Client({
-  owner: "175565380981358592",
-  commandPrefix: "m!"
-
-});
-
 module.exports = class SayCommand extends Commando.Command {
-
   constructor(client) {
-
     super(client, {
       name: "say",
+      aliases: ['echo', 'repeat'],
       group: "fun",
       memberName: "say",
-      description: "make the bot say something",
+      description: "Make the bot say / repeat something",
       args: [
         {
           key: "text",
-          prompt: "Make the bot say something",
+          prompt: "What would you like me to repeat?",
           type: "string"
         }
       ]
@@ -27,11 +20,8 @@ module.exports = class SayCommand extends Commando.Command {
 
   }
 
-  run(msg, args) {
-    const { text } = args;
+  run(msg, { text }) {
     msg.delete();
-    return msg.say(`${text}`);
-
+    msg.say(text);
   }
-
 };

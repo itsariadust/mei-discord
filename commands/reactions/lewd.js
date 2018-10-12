@@ -1,26 +1,20 @@
-const Commando = require("discord.js-commando");
-const { RichEmbed } = require("discord.js");
+const { Command } = require("discord.js-commando");
+const { MessageEmbed } = require("discord.js");
 
-module.exports = class lewdReactCommand extends Commando.Command {
-
+module.exports = class lewdReactCommand extends Command {
   constructor(client) {
-
     super(client, {
-
       name:"lewd",
       group:"reactions",
       memberName:"lewd",
       description:"L-Lewd >///<",
-
     });
-
   }
 
   run(message) {
-
-    const embed = new RichEmbed()
+    const embed = new MessageEmbed()
       .setImage("https://i.imgur.com/qZyrUsn.png");
-    message.channel.send({embed});
+    message.embed(embed);
 
   }
 

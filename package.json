@@ -1,18 +1,18 @@
 {
   "name": "mei-discord",
-  "version": "1.1.3",
+  "version": "2.0.0",
   "description": "An interactive discord bot",
-  "main": "index.js",
+  "main": "Mei.js",
   "engines": {
     "node": "8.11.1",
     "npm": "5.6.0"
   },
   "dependencies": {
     "booru": "^0.4.0",
-    "common-tags": "^1.7.2",
     "danbooru": "^3.0.7",
-    "discord.js": "^11.3.2",
-    "discord.js-commando": "^0.9.0",
+    "discord.js": "github:discordjs/discord.js",
+    "discord.js-commando": "github:discordjs/Commando",
+    "dotenv": "^6.0.0",
     "moment": "^2.22.1",
     "moment-duration-format": "^2.2.2",
     "path": "^0.12.7",
@@ -22,7 +22,6 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
   "repository": {

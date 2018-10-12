@@ -5,15 +5,16 @@ Check the MIT License
 */
 
 //required libraries. (NOTE: Some commands do have module dependencies so check them out as well)
+require('dotenv').config()
 const Commando = require("discord.js-commando");
 const sqlite = require("sqlite");
 const path = require("path");
-//const config = require("./config.json"); //this is just a config file (Only for the Indev version of Mei)
+const { MEI_OWNERS, MEI_PREFIX, MEI_TOKEN } = process.env
 
 //client
 const client = new Commando.Client({
-  owner: "175565380981358592",
-  commandPrefix: "m!",
+  owner: MEI_OWNERS.split(','),
+  commandPrefix: MEI_PREFIX,
   disableEveryone: true,
   unknownCommandResponse: false,
   guildOnly: true
@@ -26,8 +27,8 @@ client.on("debug", console.log);
 client.on("ready", () => {
 
   console.log("Loading...");
-  console.log("Mei is now up and running...");
-  client.user.setActivity("m!help", ["Playing"]);
+  console.log(`${client.user.tag} is now up and running!`);
+  client.user.setActivity(`${MEI_PREFIX}help`, ["Playing"]);
 
 });
 client.on("commandError", (cmd, err) => {
@@ -43,14 +44,19 @@ client.setProvider(
 ).catch(console.error);
 
 //command group registries
-client.registry.registerGroup("core", "Core");
-client.registry.registerGroup("info", "Info");
-client.registry.registerGroup("fun", "Fun");
-client.registry.registerGroup("reactions","Reactions");
-client.registry.registerGroup("interactions","Interactions");
-client.registry.registerGroup("booru","Booru")
-client.registry.registerDefaults();
-client.registry.registerCommandsIn(path.join(__dirname, "commands"));
+client.registry
+  .registerDefaultTypes()
+  .registerGroups([
+    ['core', 'Core'],
+    ['info', 'Info'],
+    ['fun', 'Fun'],
+    ['reactions', 'Reactions'],
+    ['interactions', 'Interactions'],
+    ['booru', 'Booru']
+  ])
+  .registerDefaultGroups()
+  .registerDefaultCommands()
+  .registerCommandsIn(path.join(__dirname, 'commands'));
 
 //now we log in OwO
-client.login(process.env.BOT_TOKEN);
+client.login(MEI_TOKEN);

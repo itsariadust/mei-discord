@@ -1,25 +1,17 @@
-const Commando = require("discord.js-commando");
+const { Command } = require("discord.js-commando");
 
-class RollCommand extends Commando.Command {
-
+module.exports = class RollCommand extends Command {
   constructor(client){
-
     super(client, {
       name: "roll",
       group: "fun",
       memberName: "roll",
       description: "Rolls a die, values are at random from 1-6",
     });
-
-  }
+}
 
   run(message) {
 
-    var roll = Math.floor(Math.random() * 6) + 1;
-    message.reply("You rolled a " + roll + "!");
-
+    message.reply(`You rolled a ${Math.floor(Math.random() * 6) + 1}`);
   }
-
 }
-
-module.exports = RollCommand;

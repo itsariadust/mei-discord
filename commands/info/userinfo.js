@@ -1,8 +1,7 @@
-const Commando = require("discord.js-commando");
-const {RichEmbed} = require("discord.js");
+const { Command } = require("discord.js-commando");
+const {MessageEmbed} = require("discord.js");
 
-module.exports = class UserInfoCommand extends Commando.Command {
-
+module.exports = class UserInfoCommand extends Command {
   constructor(client) {
     super(client, {
       name:"userinfo",
@@ -10,41 +9,30 @@ module.exports = class UserInfoCommand extends Commando.Command {
       memberName:"userinfo",
       description:"Displays user info.",
       examples:["userinfo @Eris#6753","userinfo"],
+      args: [
+        {
+          key: 'lookup',
+          prompt: 'Who do you want to lookup user info for?',
+          type: 'member',
+          default: ''
+        }
+      ]
     });
   }
 
-  run(message, args, callback) {
-
-    let member = message.mentions.members.first();
-    const embed = new RichEmbed();
-    var color = 0xC63D85;
-
-    if (!member) {
-
-      embed.setTitle("Information About" + " " + message.author.username);
-      embed.setColor(color);
-      embed.setThumbnail(message.author.avatarURL);
-      embed.addField("ID:", message.author.id, true);
-      embed.addField("Status", message.author.presence.status, true);
-      embed.addField("Account Created:", message.author.createdAt, true);
-      embed.addField("Joined on:", message.member.joinedAt, true);
-      embed.addField("Server Nickname:", message.member.nickname !== null ? `${message.member.nickname}` : "No nickname set", true);
-      embed.addField("Server Roles:", message.member.roles.map(roles => `${roles.name}`).join(", "));
-      return message.embed(embed).then(callback);
-
-    } else {
-
-      embed.setTitle("Information About" + " " + member.displayName);
-      embed.setColor(color);
-      embed.addField("Status", member.presence.status);
-      embed.addField("ID:", member.id);
-      embed.addField("Account Created:", member.user.createdAt, true);
-      embed.addField("Joined on:", member.joinedAt, true);
-      embed.addField("Server Nickname:", member.nickname !== null ? `Nickname: ${member.nickname}` : "No nickname set", true);
-      embed.addField("Server Roles:", member.roles.map(roles => `${roles.name}`).join(", "));
-      return message.embed(embed).then(callback);
-
-    }
+  run(message, { lookup }) {
+      if(lookup === '') lookup = message.member
+      const embed = new MessageEmbed()
+      .setTitle("Information About" + " " + lookup.displayName)
+      .setColor('0xC63D85')
+      .setThumbnail(lookup.displayAvatarURL)
+      .addField("ID:", lookup.id, true)
+      .addField("Status", (lookup.presence.status) ? lookup.presence.status : '???', true)
+      .addField("Account Created:", lookup.user.createdAt, true)
+      .addField("Joined on:", lookup.joinedAt, true)
+      .addField("Server Nickname:", (lookup.nickname) ? lookup.nickname : "???", true)
+      .addField("Server Roles:", lookup.roles.map(roles => `${roles.name}`).join(", "))
+      return message.embed(embed)
 
   }
 };

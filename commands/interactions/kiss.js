@@ -1,5 +1,5 @@
 const Commando = require("discord.js-commando");
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = class kissCommand extends Commando.Command {
 
@@ -29,7 +29,7 @@ module.exports = class kissCommand extends Commando.Command {
       message.channel.send(message.author.username + " kisses " + `${member}`);
     }
 
-    const embed = new RichEmbed()
+    const embed = new MessageEmbed()
       .setImage(kissIndex[Math.floor(Math.random() * kissIndex.length)]);
     message.channel.send({
       embed

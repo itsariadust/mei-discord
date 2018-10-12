@@ -1,5 +1,5 @@
 const Commando = require("discord.js-commando");
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = class mfCommand extends Commando.Command {
 
@@ -27,7 +27,7 @@ module.exports = class mfCommand extends Commando.Command {
       message.channel.send(message.author.username + " gives the middle finger to " + `${member}`);
     }
 
-    const embed = new RichEmbed()
+    const embed = new MessageEmbed()
       .setImage(mf[Math.floor(Math.random() * mf.length)]);
     message.channel.send({embed});
 

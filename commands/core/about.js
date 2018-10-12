@@ -1,27 +1,23 @@
-const Commando = require("discord.js-commando");
-const { RichEmbed } = require("discord.js");
+const { Command } = require("discord.js-commando");
+const { MessageEmbed } = require("discord.js");
 
-module.exports = class AboutCommand extends Commando.Command {
+module.exports = class AboutCommand extends Command {
   constructor(client) {
     super(client, {
-
       name: "about",
       group: "core",
       memberName: "about",
       description: "Gives bot information"
-
     });
   }
 
-  run (msg, args, callback) {
-
-    const embed = new RichEmbed();
-    embed.setTitle("About Mei");
-    embed.setColor(0x551A8B);
-    embed.setDescription("Mei is a discord bot made by Eris#6753 using discord.js. Commands handled by discord.js-commando. For help please type `m!help`");
-    embed.addField("Owner","Eris#6753");
-    embed.addField("Version","v1.1.3");
-    return msg.embed(embed).then(callback);
-
+  run (message) {
+    const embed = new MessageEmbed()
+    .setTitle("About Mei")
+    .setColor('0x551A8B')
+    .setDescription(`Mei is a discord bot made by Eris#6753 using discord.js. Commands handled by discord.js-commando. For help please type \`${process.env.MEI_PREFIX}help\``)
+    .addField("Owner","Eris#6753")
+    .addField("Version","v1.1.3")
+    return message.embed(embed)
   }
 };
