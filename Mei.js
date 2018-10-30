@@ -10,6 +10,7 @@ const sqlite = require("sqlite");
 const path = require("path");
 const chalk = require("chalk");
 const oneLine = require("common-tags").oneLine;
+const fs = require("fs");
 const afk = require("./assets/json/settings/afk.json");
 
 // consts for colors
@@ -26,17 +27,22 @@ const client = new Commando.Client({
   guildOnly: true,
 });
 
-console.log("Starting up Mei...");
+fs.readdir("./events/", (err, files) => {
+  if (err) console.error(err);
+  console.log(`Loading events... (${files.length})`);
+  files.forEach(file => {
+    const eventName = file.split(".")[0];
+    const event = require(`./events/${file}`);
+    client.on(eventName, event.bind(null, client));
+    delete require.cache[require.resolve(`./events/${file}`)];
+  });
+});
 
 // for console logging. Useful for debugging
 client
   .on("error", (e) => console.error(error(e)))
   .on("warn", (e) => console.warn(warn(e)))
   .on("debug", (e) => console.log(debug(e)))
-  .on("ready", () => {
-    console.log(chalk.green(`[READY] Mei now up and running as ${client.user.tag}`));
-    client.user.setActivity(">help", ["Playing"]);
-  })
   .on("disconnect", (event) => {
     console.error(chalk.red(`[DISCONNECT] Disconnected with code ${event.code}. Attempting to reconnect...`));
     process.exit(0);
@@ -122,5 +128,5 @@ client.registry
   .registerDefaults()
   .registerCommandsIn(path.join(__dirname, "commands"));
 
-// now we log in OwO
+// now we log in
 client.login(process.env.BOT_TOKEN).catch(console.error);
