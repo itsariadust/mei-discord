@@ -15,10 +15,9 @@ module.exports = class ballCommand extends Commando.Command {
         {
           key:"question",
           prompt:"Ask 8ball a question. Usage: `m!8ball <question>`",
-          type:"string"
-        }
-      ]
-
+          type:"string",
+        },
+      ],
     });
   }
 
