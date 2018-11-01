@@ -30,11 +30,10 @@ module.exports = class UserInfoCommand extends Commando.Command {
       embed.addField("Account Created:", message.author.createdAt, true);
       embed.addField("Joined on:", message.member.joinedAt, true);
       embed.addField("Server Nickname:", message.member.nickname !== null ? `${message.member.nickname}` : "No nickname set", true);
-      embed.addField("Server Roles:", message.member.roles.map(roles => `${roles.name}`).join(", "));
+      embed.addField("Server Roles:", message.member.roles.map(roles => `${roles.name}`).slice(1).join(", "));
       return message.embed(embed).then(callback);
 
-    }
-    else {
+    } else {
 
       embed.setTitle("Information About" + " " + member.displayName);
       embed.setColor(color);
