@@ -1,4 +1,5 @@
 const Commando = require("discord.js-commando");
+const { RichEmbed } = require("discord.js");
 const stripIndents = require("common-tags").stripIndents;
 const modRole = require("../../assets/json/settings/modrole.json");
 
@@ -51,8 +52,18 @@ module.exports = class BanCommand extends Commando.Command {
         "Reason: "${banMsg}"
         `);
         message.delete();
-        return message.say("Done"); 
       });
+
+      if (!message.guild.settings.get("modlog")) {
+        return message.say("Done");
+      } else {
+        const embed = new RichEmbed();
+        embed.setTitle("Member Banned");
+        embed.setAuthor(`${member.user.username}#${member.user.discriminator} (${member.user.id})`, member.user.avatarURL);
+        embed.addField("Member banned", `Reason: ${banMsg}`);
+        embed.setTimestamp(message.createdTimestamp);
+        return message.embed(embed);
+      }
     }
   }
 };
