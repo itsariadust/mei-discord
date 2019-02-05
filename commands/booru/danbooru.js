@@ -28,7 +28,7 @@ module.exports = class danbooruCommand extends Commando.Command {
 
   }
 
-  run(message, callback, {tagQuery}) {
+  run(message, {tagQuery}) {
 
     const booru = new Danbooru();
     booru.posts({ tags: "rating:safe" + `${tagQuery}`, random: true}).then(posts => {
@@ -36,10 +36,10 @@ module.exports = class danbooruCommand extends Commando.Command {
       const post = posts[index];
       const url = booru.url(post.file_url);
 
-      const embed = new RichEmbed();
-      embed.addField("Source", `${url}`);
-      embed.setImage(`${url}`);
-      return message.embed(embed).then(callback);
+      const embed = new RichEmbed()
+        .addField("Source", `${url}`)
+        .setImage(`${url}`);
+      return message.embed(embed);
     });
 
   }

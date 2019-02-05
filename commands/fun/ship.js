@@ -10,12 +10,12 @@ module.exports = class shipCommand extends Commando.Command {
       description:"Ship two members, bots are also welcome",
       args: [
         {
-          key:"shipUser1",
+          key:"shipOne",
           prompt:"Please mention a member then a second member",
           type:"member",
         },
         {
-          key:"shipUser2",
+          key:"shipTwo",
           prompt:"Please mention a second member!",
           type:"member",
         },
@@ -23,31 +23,21 @@ module.exports = class shipCommand extends Commando.Command {
     });
   }
 
-  run(message, args, callback) {
+  run(message, {shipOne, shipTwo}) {
     const love = Math.floor(Math.random() * 100);
     let ship;
 
-    if (love === 100) {
-      ship = "Perfect and lovely couple! <3 <3 <3";
-    }
-    else if (love >= 75) {
-      ship = "Great Couple! <3 <3";
-    }
-    else if (love >= 50) {
-      ship = "Nice Couple! <3";
-    }
-    else if (love >= 25) {
-      ship = "Not bad";
-    }
-    else if (love <= 24) {
-      ship = "This won't last...";
-    }
+    if (love == 100) ship = "Perfect and lovely couple! <3 <3 <3";
+    else if (love >= 75) ship = "Great Couple! <3 <3";
+    else if (love >= 50) ship = "Nice Couple! <3";
+    else if (love >= 25) ship = "Not bad...";
+    else if (love <= 24) ship = "This wont last...";
 
-    const embed = new RichEmbed();
-    embed.setTitle("~Ship Analysis~");
-    embed.addField("Shipped Members", `${args.shipUser1} & ${args.shipUser2}`);
-    embed.addField("Ship Value", `${love}%\n ${ship}`);
-    return message.embed(embed).then(callback);
+    const embed = new RichEmbed()
+      .setTitle("~Ship Analysis~")
+      .addField("Shipped Members", `${shipOne.displayName} & ${shipTwo.displayName}`)
+      .addField("Ship Value", `${love}% ${ship}`);
+    return message.embed(embed)
   }
 
 };

@@ -14,12 +14,13 @@ class SayCommand extends commando.Command {
       }]
     });
   }
-  run(message, args) {
+  
+  run(message, {text}) {
     if (message.mentions.channels.first()) {
+      message.mentions.channels.first().send(text.split(" ").slice(1).join(" "));
       message.delete();
-      message.mentions.channels.first().send(args.text.split(" ").slice(1).join(" "));
     } else {
-      message.say(args.text);
+      message.say(text);
       message.delete();
     }
   }

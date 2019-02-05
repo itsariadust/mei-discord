@@ -1,12 +1,10 @@
 const Commando = require("discord.js-commando");
-const answer = require("../../assets/json/8ball.json");
+const answer = require("../../assets/json/8ball.json").answer;
 const { stripIndents } = require("common-tags");
 
 module.exports = class ballCommand extends Commando.Command {
-
   constructor(client) {
     super(client, {
-
       name: "8ball",
       group: "fun",
       memberName:"8ball",
@@ -22,12 +20,9 @@ module.exports = class ballCommand extends Commando.Command {
   }
 
   run(message, {question}) {
-    if (`${question}`) {
-      message.say(`${question}`);
-      return message.say(stripIndents`
-      ${answer[Math.floor(Math.random() * answer.length)]}, ${message.author.username}
-      `);
-    }
+    message.say(`${question}`);
+    return message.say(stripIndents`
+    ${answer[Math.floor(Math.random() * answer.length)]}, ${message.author.username}
+    `);
   }
-
 };

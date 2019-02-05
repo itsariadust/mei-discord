@@ -9,17 +9,15 @@ module.exports = class rateWaifuCommand extends Commando.Command {
       description:"Rates your waifu, it's either a server member or just an anime character.",
       args: [
         {
-          key:"waifu",
-          prompt:"Please enter your waifu name, or a member",
-          type:"string",
+          key: "waifu",
+          prompt: "Please enter your waifu name, or a member",
+          type: "string|member",
         },
       ],
     });
   }
 
-  run(message, args) {
-    const { waifu } = args;
-    const waifuRate = Math.floor(Math.random() * 100);
-    message.say(`I would rate ${waifu} a ${waifuRate}%`);
+  run(message, {waifu}) {
+    message.say(`I would rate ${(waifu.displayName) ? waifu.displayName : waifu} ${Math.floor(Math.random() * 100)}%`);
   }
 };

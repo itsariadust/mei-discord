@@ -11,7 +11,6 @@ module.exports = class RollCommand extends Commando.Command {
   }
 
   run(message) {
-    const roll = Math.floor(Math.random() * 6) + 1;
-    message.reply(`You rolled a ${roll}!`);
+    message.reply(`You rolled a ${Math.floor(Math.random() * 6) + 1}!`);
   }
 };

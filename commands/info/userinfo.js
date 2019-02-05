@@ -11,41 +11,29 @@ module.exports = class UserInfoCommand extends Commando.Command {
       memberName:"userinfo",
       description:"Displays user info.",
       examples:["userinfo @Eris#6753", "userinfo"],
+      args: [{
+        key: "lookup",
+        prompt: "Who do you want to lookup user info for?",
+        type: "member",
+        default: ""
+      }]
     });
   }
 
-  run(message, args, callback) {
+  run(message, {lookup}) {
 
-    const member = message.mentions.members.first();
+    if (lookup === "") lookup = message.member;
     const embed = new RichEmbed();
-    const color = 0xC63D85;
 
-    if (!member) {
-
-      embed.setTitle("Information About" + " " + message.author.username);
-      embed.setColor(color);
-      embed.setThumbnail(message.author.avatarURL);
-      embed.addField("ID:", message.author.id, true);
-      embed.addField("Status", message.author.presence.status, true);
-      embed.addField("Account Created:", message.author.createdAt, true);
-      embed.addField("Joined on:", message.member.joinedAt, true);
-      embed.addField("Server Nickname:", message.member.nickname !== null ? `${message.member.nickname}` : "No nickname set", true);
-      embed.addField("Server Roles:", message.member.roles.map(roles => `${roles.name}`).slice(1).join(", "));
-      return message.embed(embed).then(callback);
-
-    } else {
-
-      embed.setTitle("Information About" + " " + member.displayName);
-      embed.setColor(color);
-      embed.addField("Status", member.presence.status);
-      embed.addField("ID:", member.id);
-      embed.addField("Account Created:", member.user.createdAt, true);
-      embed.addField("Joined on:", member.joinedAt, true);
-      embed.addField("Server Nickname:", member.nickname !== null ? `Nickname: ${member.nickname}` : "No nickname set", true);
-      embed.addField("Server Roles:", member.roles.map(roles => `${roles.name}`).join(", "));
-      return message.embed(embed).then(callback);
-
-    }
-
+    embed.setTitle("Information About" + " " + lookup.displayName);
+    embed.setColor(0xC63D85);
+    embed.setThumbnail(lookup.displayAvatarURL);
+    embed.addField("ID:", lookup.id, true);
+    embed.addField("Status", (lookup.presence.status) ? lookup.presence.status : "???", true);
+    embed.addField("Account Created:", lookup.user.createdAt, true);
+    embed.addField("Joined on:", lookup.joinedAt, true);
+    embed.addField("Server Nickname:", (lookup.nickname) ? lookup.nickname : "???", true);
+    embed.addField("Server Roles:", lookup.roles.map(roles => `${roles.name}`).slice(1).join(", "));
+    return message.embed(embed);
   }
 };
