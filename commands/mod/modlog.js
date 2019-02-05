@@ -16,11 +16,11 @@ module.exports = class ModLogSetCommand extends Commando.Command {
     });
   }
 
-  run(message, args) {
+  run(message, {action}) {
     if (!modRole[message.guild.id]) return message.reply("There are no roles set up for this command to run");
     
     if (message.member.roles.some(r => modRole[message.guild.id].modroles.includes(r.id)) || message.author.id === message.guild.ownerID) {
-      if (args.action.toLowerCase() === "add" || "set") {
+      if (action.toLowerCase() === "add" || "set") {
         let channel = message.mentions.channels.first();
         if (!channel) return message.reply("Please specify a channel");
 
@@ -29,7 +29,7 @@ module.exports = class ModLogSetCommand extends Commando.Command {
         return message.reply(`Done. Modlog channel set to "<#${message.guild.settings.get("modlog")}>"`);
       }
 
-      if (args.action.toLowerCase() === "remove") {
+      if (action.toLowerCase() === "remove") {
         message.guild.settings.remove("modlog");
         return message.reply(`Done. Removed the modlog channel. Do \`${message.guild.commandPrefix}settings add modlog\` to set a new channel for modlogging`);
       }

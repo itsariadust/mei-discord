@@ -24,9 +24,7 @@ module.exports = class KickCommand extends Commando.Command {
     });
   }
 
-  run(message, args) {
-    const { member, kickMsg } = args;
-
+  run(message, {member,kickMsg}) {
     if (!modRole[message.guild.id]) return message.reply("There are no roles set up for this command to run");
     if (!message.member.roles.some(r => modRole[message.guild.id].modroles.includes(r.id)) && message.author.id !== message.guild.ownerID) {
       return message.reply("You don't have the permissions to execute this command");

@@ -23,17 +23,17 @@ module.exports = class ModRoleCommand extends Commando.Command {
     });
   }
 
-  run(message, args) {
+  run(message, {action, role}) {
     // adds a mod role
     if (message.author.id !== message.guild.ownerID) return message.reply("You don't have the permission to execute this command");
-    if (args.action.toLowerCase() === "add") {
+    if (action.toLowerCase() === "add") {
       if (!modRole[message.guild.id]) {
         modRole[message.guild.id] = {
           modroles: []
         };
       }
       
-      let id = args.role.id;
+      let id = role.id;
       if (modRole[message.guild.id].modroles.includes(id)) {
         return message.reply("The mod role has already been added.");
       } else {
@@ -49,12 +49,12 @@ module.exports = class ModRoleCommand extends Commando.Command {
     }
 
     // removes a mod role
-    if (args.action.toLowerCase() === "remove") {
+    if (action.toLowerCase() === "remove") {
       if (!modRole[message.guild.id]) {
         return message.reply(`There are no roles listed for mod commands. Please add by using \`${message.guild.commandPrefix}modrole add <Role>\``);
       }
 
-      let role = modRole[message.guild.id].modroles.includes(args.role.id);
+      let role = modRole[message.guild.id].modroles.includes(role.id);
 
       if (role === false) {
         return message.reply("Role not found. Perhaps you misspelled it or you didn't list it in");

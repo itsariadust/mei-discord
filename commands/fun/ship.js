@@ -27,7 +27,7 @@ module.exports = class shipCommand extends Commando.Command {
     const love = Math.floor(Math.random() * 100);
     let ship;
 
-    if (love == 100) ship = "Perfect and lovely couple! <3 <3 <3";
+    if (love === 100) ship = "Perfect and lovely couple! <3 <3 <3";
     else if (love >= 75) ship = "Great Couple! <3 <3";
     else if (love >= 50) ship = "Nice Couple! <3";
     else if (love >= 25) ship = "Not bad...";
@@ -37,7 +37,7 @@ module.exports = class shipCommand extends Commando.Command {
       .setTitle("~Ship Analysis~")
       .addField("Shipped Members", `${shipOne.displayName} & ${shipTwo.displayName}`)
       .addField("Ship Value", `${love}% ${ship}`);
-    return message.embed(embed)
+    return message.embed(embed);
   }
 
 };

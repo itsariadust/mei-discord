@@ -17,11 +17,11 @@ module.exports = class unmuteCommand extends Commando.Command {
     });
   }
 
-  run(message, args) {
+  run(message, {member}) {
     if (!modRole[message.guild.id]) return message.reply("There are no roles set up for this comamnd to run");
     if (message.member.roles.some(r => modRole[message.guild.id].modroles.includes(r.id)) || message.author.id === message.guild.ownerID) {
       let muteRole = message.guild.roles.find("name", "Muted");
-      args.member.removeRole(muteRole.id);
+      member.removeRole(muteRole.id);
       return message.reply("Done");
     } else return message.reply("You don't have the permissions to execute this command");
   }
