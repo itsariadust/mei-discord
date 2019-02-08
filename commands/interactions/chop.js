@@ -5,7 +5,7 @@ module.exports = class chopCommand extends Commando.Command {
   constructor(client) {
     super(client, {
       name: "chop",
-      group: "roleplay",
+      group: "interactions",
       memberName: "chop",
       description: "*headchops*",
     });

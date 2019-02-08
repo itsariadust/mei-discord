@@ -8,7 +8,7 @@ module.exports = class punchCommand extends Commando.Command {
     super(client, {
 
       name:"punch",
-      group:"roleplay",
+      group: "interactions",
       memberName:"punch",
       description:"*punches*",
 

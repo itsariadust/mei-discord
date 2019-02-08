@@ -5,7 +5,7 @@ module.exports = class glareCommand extends Commando.Command {
   constructor(client) {
     super(client, {
       name: "glare",
-      group: "roleplay",
+      group: "interactions",
       memberName: "glare",
       description: "*glares*",
     });

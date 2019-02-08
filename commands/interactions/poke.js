@@ -8,7 +8,7 @@ module.exports = class pokeCommand extends Commando.Command {
     super(client, {
 
       name: "poke",
-      group: "roleplay",
+      group: "interactions",
       memberName: "poke",
       description: "*pokes*",
 

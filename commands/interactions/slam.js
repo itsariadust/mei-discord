@@ -8,7 +8,7 @@ module.exports = class smalCommand extends Commando.Command {
     super(client, {
 
       name:"slam",
-      group:"roleplay",
+      group: "interactions",
       memberName:"slam",
       description:"*slams*",
 

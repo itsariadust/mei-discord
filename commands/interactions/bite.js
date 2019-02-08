@@ -7,7 +7,7 @@ module.exports = class BiteCommand extends Commando.Command {
   constructor(client) {
     super(client, {
       name: "bite",
-      group: "roleplay",
+      group: "interactions",
       memberName: "bite",
       description: "*bites*",
     });

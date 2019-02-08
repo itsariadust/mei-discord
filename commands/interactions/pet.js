@@ -9,7 +9,7 @@ module.exports = class petCommand extends Commando.Command {
 
       name: "pet",
       aliases: ["pat"],
-      group: "roleplay",
+      group: "interactions",
       memberName: "pet",
       description: "*pets*",
 

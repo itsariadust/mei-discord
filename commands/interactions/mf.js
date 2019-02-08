@@ -5,7 +5,7 @@ module.exports = class mfCommand extends Commando.Command {
   constructor(client) {
     super(client, {
       name:"mf",
-      group:"roleplay",
+      group: "interactions",
       memberName:"mf",
       description:"*does the middle finger*",
     });

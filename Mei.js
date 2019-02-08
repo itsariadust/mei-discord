@@ -122,7 +122,7 @@ client.registry
     ["images", "Images"],
     ["nsfw", "NSFW"],
     ["reactions", "Reactions"],
-    ["roleplay", "Roleplay"],
+    ["interactions", "Interactions"],
     ["misc", "Misc"]
   ])
   .registerDefaults()
