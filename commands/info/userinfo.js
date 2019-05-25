@@ -15,25 +15,27 @@ module.exports = class UserInfoCommand extends Commando.Command {
         key: "lookup",
         prompt: "Who do you want to lookup user info for?",
         type: "member",
-        default: ""
+        default: " "
       }]
     });
   }
 
   run(message, {lookup}) {
 
-    if (lookup === "") lookup = message.member;
+    if (lookup === " ") lookup = message.member;
+    
     const embed = new RichEmbed();
+    let roles = lookup.roles.map(roles => `${roles.name}`).toString().replace('@everyone','everyone');
 
     embed.setTitle("Information About" + " " + lookup.displayName);
     embed.setColor(0xC63D85);
-    embed.setThumbnail(lookup.displayAvatarURL);
+    embed.setThumbnail(lookup.user.displayAvatarURL);
     embed.addField("ID:", lookup.id, true);
     embed.addField("Status", (lookup.presence.status) ? lookup.presence.status : "???", true);
     embed.addField("Account Created:", lookup.user.createdAt, true);
     embed.addField("Joined on:", lookup.joinedAt, true);
     embed.addField("Server Nickname:", (lookup.nickname) ? lookup.nickname : "???", true);
-    embed.addField("Server Roles:", lookup.roles.map(roles => `${roles.name}`).slice(1).join(", "));
+    embed.addField("Server Roles:", roles);
     return message.embed(embed);
   }
 };
