@@ -3,25 +3,25 @@ const { RichEmbed } = require("discord.js");
 
 module.exports = class lewdReactCommand extends Commando.Command {
 
-  constructor(client) {
+	constructor(client) {
 
-    super(client, {
+		super(client, {
 
-      name:"lewd",
-      group:"reactions",
-      memberName:"lewd",
-      description:"L-Lewd >///<",
+			name:"lewd",
+			group:"reactions",
+			memberName:"lewd",
+			description:"L-Lewd >///<",
 
-    });
+		});
 
-  }
+	}
 
-  run(message) {
+	run(message) {
 
-    const embed = new RichEmbed()
-      .setImage("https://i.imgur.com/qZyrUsn.png");
-    message.channel.send({ embed });
+		const embed = new RichEmbed()
+			.setImage("https://i.imgur.com/qZyrUsn.png");
+		message.channel.send({ embed });
 
-  }
+	}
 
 };

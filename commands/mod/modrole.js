@@ -3,70 +3,71 @@ const modRole = require("../../assets/json/settings/modrole.json");
 const fs = require("fs");
 
 module.exports = class ModRoleCommand extends Commando.Command {
-  constructor(client) {
-    super(client, {
-      name: "modrole",
-      group: "mod",
-      memberName: "modrole",
-      description: "Adds/Removes a role for mod commands. (Can only be used by the server owner)",
-      args: [{
-        key: "action",
-        prompt: "What action would you like to perform? `add` or `remove`",
-        type: "string"
-      },
-      {
-        key: "role",
-        prompt: "Please enter a role name. (Make sure the role is mentionable for this command to work)",
-        type: "role"
-      }
-      ]
-    });
-  }
+	constructor(client) {
+		super(client, {
+			name: "modrole",
+			group: "mod",
+			memberName: "modrole",
+			description: "Adds/Removes a role for mod commands. (Can only be used by the server owner)",
+			args: [{
+				key: "action",
+				prompt: "What action would you like to perform? `add` or `remove`",
+				type: "string",
+			},
+			{
+				key: "role",
+				prompt: "Please enter a role name. (Make sure the role is mentionable for this command to work)",
+				type: "role",
+			},
+			],
+		});
+	}
 
-  run(message, {action, role}) {
-    // adds a mod role
-    if (message.author.id !== message.guild.ownerID) return message.reply("You don't have the permission to execute this command");
-    if (action.toLowerCase() === "add") {
-      if (!modRole[message.guild.id]) {
-        modRole[message.guild.id] = {
-          modroles: []
-        };
-      }
-      
-      let id = role.id;
-      if (modRole[message.guild.id].modroles.includes(id)) {
-        return message.reply("The mod role has already been added.");
-      } else {
-        modRole[message.guild.id].modroles.push(id);
-        fs.writeFile("./assets/json/settings/modrole.json", JSON.stringify(modRole, null, 2), (err) => {
-          if (err) {
-            message.reply("Something went wrong! Contact Eris#6753");
-            return console.error(err);
-          }
-          return message.reply("Mod role added.");
-        });
-      }
-    }
+	run(message, { action, role }) {
+		// adds a mod role
+		if (message.author.id !== message.guild.ownerID) return message.reply("You don't have the permission to execute this command");
+		if (action.toLowerCase() === "add") {
+			if (!modRole[message.guild.id]) {
+				modRole[message.guild.id] = {
+					modroles: [],
+				};
+			}
 
-    // removes a mod role
-    if (action.toLowerCase() === "remove") {
-      if (!modRole[message.guild.id]) {
-        return message.reply(`There are no roles listed for mod commands. Please add by using \`${message.guild.commandPrefix}modrole add <Role>\``);
-      }
+			const id = role.id;
+			if (modRole[message.guild.id].modroles.includes(id)) {
+				return message.reply("The mod role has already been added.");
+			}
+			else {
+				modRole[message.guild.id].modroles.push(id);
+				fs.writeFile("./assets/json/settings/modrole.json", JSON.stringify(modRole, null, 2), (err) => {
+					if (err) {
+						message.reply("Something went wrong! Contact Eris#6753");
+						return console.error(err);
+					}
+					return message.reply("Mod role added.");
+				});
+			}
+		}
 
-      let role = modRole[message.guild.id].modroles.includes(role.id);
+		// removes a mod role
+		if (action.toLowerCase() === "remove") {
+			if (!modRole[message.guild.id]) {
+				return message.reply(`There are no roles listed for mod commands. Please add by using \`${message.guild.commandPrefix}modrole add <Role>\``);
+			}
 
-      if (role === false) {
-        return message.reply("Role not found. Perhaps you misspelled it or you didn't list it in");
-      }
-      modRole[message.guild.id].modroles.splice(role, 1);
-      fs.writeFile("./assets/json/settings/modrole.json", JSON.stringify(modRole, null, 2), (err) => {
-        if (err) {
-          message.reply("Something went wrong! Contact Eris#6753");
-          return console.error(err);
-        }
-        return message.reply("Mod role removed.");
-      });
-    }
-  }
+			const role = modRole[message.guild.id].modroles.includes(role.id);
+
+			if (role === false) {
+				return message.reply("Role not found. Perhaps you misspelled it or you didn't list it in");
+			}
+			modRole[message.guild.id].modroles.splice(role, 1);
+			fs.writeFile("./assets/json/settings/modrole.json", JSON.stringify(modRole, null, 2), (err) => {
+				if (err) {
+					message.reply("Something went wrong! Contact Eris#6753");
+					return console.error(err);
+				}
+				return message.reply("Mod role removed.");
+			});
+		}
+	}
 };

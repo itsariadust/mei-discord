@@ -3,36 +3,36 @@ const { RichEmbed } = require("discord.js");
 
 module.exports = class stabCommand extends Commando.Command {
 
-  constructor(client) {
+	constructor(client) {
 
-    super(client, {
+		super(client, {
 
-      name:"stab",
-      group: "interactions",
-      memberName:"stab",
-      description:"*stabs*",
+			name:"stab",
+			group: "interactions",
+			memberName:"stab",
+			description:"*stabs*",
 
-    });
+		});
 
-  }
+	}
 
-  run(message) {
+	run(message) {
 
-    const stab = ["https://media1.tenor.com/images/aebaa1a854ea1fc04286a8729b3b6cf4/tenor.gif?itemid=5381666"];
-    const member = message.mentions.members.first();
-    const randMember = message.guild.members.random().id;
+		const stab = ["https://media1.tenor.com/images/aebaa1a854ea1fc04286a8729b3b6cf4/tenor.gif?itemid=5381666"];
+		const member = message.mentions.members.first();
+		const randMember = message.guild.members.random().id;
 
-    if (!member) {
-      message.channel.send(message.author.username + " stabs " + "<@" + randMember + ">");
-    }
-    else {
-      message.channel.send(message.author.username + " stabs " + `${member}`);
-    }
+		if (!member) {
+			message.channel.send(message.author.username + " stabs " + "<@" + randMember + ">");
+		}
+		else {
+			message.channel.send(message.author.username + " stabs " + `${member}`);
+		}
 
-    const embed = new RichEmbed()
-      .setImage(stab[Math.floor(Math.random() * stab.length)]);
-    message.channel.send({embed});
+		const embed = new RichEmbed()
+			.setImage(stab[Math.floor(Math.random() * stab.length)]);
+		message.channel.send({ embed });
 
-  }
+	}
 
 };

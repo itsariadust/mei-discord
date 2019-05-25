@@ -4,24 +4,25 @@
   "description": "An interactive discord bot",
   "main": "Mei.js",
   "engines": {
-    "node": "8.11.1",
-    "npm": "5.6.0"
+    "node": "10.15.3",
+    "npm": "6.4.1"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "booru": "^0.4.0",
-    "chalk": "^2.4.1",
-    "common-tags": "^1.7.2",
-    "danbooru": "^3.0.7",
-    "discord.js": "^11.3.2",
+    "chalk": "^2.4.2",
+    "common-tags": "^1.8.0",
+    "danbooru": "^3.1.0",
+    "discord.js": "^11.5.0",
     "discord.js-commando": "^0.10.0",
     "dotenv": "^5.0.1",
-    "moment": "^2.22.1",
+    "moment": "^2.24.0",
     "moment-duration-format": "^2.2.2",
     "ms": "^2.1.1",
+    "node-fetch": "^2.6.0",
     "path": "^0.12.7",
     "random-puppy": "^1.1.0",
-    "sqlite": "^2.9.1"
+    "sqlite": "^3.0.3"
   },
   "devDependencies": {
     "eslint": "^4.19.1"

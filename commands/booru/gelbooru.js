@@ -4,31 +4,31 @@ const booru = require("booru");
 
 module.exports = class konachanCommand extends Commando.Command {
 
-  constructor(client) {
+	constructor(client) {
 
-    super(client, {
+		super(client, {
 
-      name: "gelbooru",
-      group: "booru",
-      memberName: "gelbooru",
-      description: "Posts a random image from Konachan (SFW)",
+			name: "gelbooru",
+			group: "booru",
+			memberName: "gelbooru",
+			description: "Posts a random image from Konachan (SFW)",
 
-    });
+		});
 
-  }
+	}
 
-  run(message) {
+	run(message) {
 
-    booru.search("gelbooru", ["rating:safe"], { limit:1, random:true })
-      .then(booru.commonfy)
-      .then((images) => {
-        for (const image of images) {
-          const url = image.common.file_url;
-          const embed = new RichEmbed()
-            .addField("Source", `${url}`)
-            .setImage(`${url}`);
-          return message.embed(embed);
-        }
-      });
-  }
+		booru.search("gelbooru", ["rating:safe"], { limit:1, random:true })
+			.then(booru.commonfy)
+			.then((images) => {
+				for (const image of images) {
+					const url = image.common.file_url;
+					const embed = new RichEmbed()
+						.addField("Source", `${url}`)
+						.setImage(`${url}`);
+					return message.embed(embed);
+				}
+			});
+	}
 };
