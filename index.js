@@ -4,6 +4,8 @@ Copyright (c) 2018 Eris. All Rights Reserved
 Check the MIT License
 */
 
+// this requires a complete overhaul after years of updated. please do not run
+
 //required libraries. (NOTE: Some commands do have module dependencies so check them out as well)
 const Commando = require("discord.js-commando");
 const sqlite = require("sqlite");
