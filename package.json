@@ -13,7 +13,7 @@
     "danbooru": "^3.0.7",
     "discord.js": "^11.3.2",
     "discord.js-commando": "^0.9.0",
-    "moment": "^2.22.1",
+    "moment": "^2.29.2",
     "moment-duration-format": "^2.2.2",
     "path": "^0.12.7",
     "snekfetch": "^3.6.4",
